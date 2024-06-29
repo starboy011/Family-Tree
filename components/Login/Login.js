@@ -46,39 +46,31 @@ const Login = () => {
         >
           <Text
             variant="displayMedium"
-            style={{ fontWeight: "bold", fontFamily: "serif" }}
+            style={{
+              fontWeight: "bold",
+              fontFamily: "serif",
+              letterSpacing: -3,
+            }}
           >
-            BookCuts
-          </Text>
-          <Text
-            variant="headlineSmall"
-            style={{ fontWeight: 300, fontFamily: "serif" }}
-          >
-            Get your perfect
-          </Text>
-          <Text
-            variant="titleSmall"
-            style={{ fontWeight: 100, fontFamily: "serif" }}
-          >
-            haircut appointment.
+            Mulvansham
           </Text>
         </Animated.View>
       </View>
       <View style={styles.image}>
-        <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
+        <View style={{ height: 150, width: 150 }}>
           <ImageBackground
-            source={require("./haircut.png")}
+            source={require("./PreLoginScreen.gif")}
             style={styles.backgroundImage}
           />
-        </Animated.View>
+        </View>
       </View>
       <View style={styles.field}>
         <TouchableOpacity
           style={{ width: "90%" }}
           onPress={() => navigation.navigate("LoginScreen1")}
         >
-          <Button icon="book" mode="contained" buttonColor="blue">
-            Book Now
+          <Button icon="tree" mode="contained" buttonColor="blue">
+            Get In
           </Button>
         </TouchableOpacity>
       </View>
@@ -89,7 +81,7 @@ const Login = () => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#DFF5FF" },
+  container: { flex: 1, backgroundColor: "white" },
   titlecontainer: {
     width: "100%",
     height: "15%",
@@ -106,7 +98,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "55%",
+    height: "50%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   field: {
     justifyContent: "center",
