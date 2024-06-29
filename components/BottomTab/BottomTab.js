@@ -6,8 +6,6 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import Home from "../Home/Home";
 import Search from "../Search/Search";
 import FamilyTree from "../FamilyTree/FamilyTree";
-// import Search from "../Search/Search";
-// import HairStyle from "../HairStyle/HairStyle";
 
 const Tab = createBottomTabNavigator();
 const { width, height } = Dimensions.get("window");
