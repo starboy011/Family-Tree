@@ -44,7 +44,9 @@ const FamilyTree = () => {
     "Manish Choudhary",
     "Neha Choudhary",
   ];
-
+  const filteredPersons = persons.filter((person) =>
+    person.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchContainer}>
@@ -56,7 +58,7 @@ const FamilyTree = () => {
         />
       </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        {persons.map((person, index) => (
+        {filteredPersons.map((person, index) => (
           <View key={index} style={styles.personContainer}>
             <Person name={person} />
           </View>
