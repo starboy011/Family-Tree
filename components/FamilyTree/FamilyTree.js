@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Person from "./Person";
 import { Searchbar } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const FamilyTree = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -60,7 +61,9 @@ const FamilyTree = () => {
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {filteredPersons.map((person, index) => (
           <View key={index} style={styles.personContainer}>
-            <Person name={person} />
+            <TouchableOpacity style={{ width: "100%" }}>
+              <Person name={person} />
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>

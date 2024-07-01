@@ -7,7 +7,7 @@ const Person = ({ name }) => {
     <View style={styles.container}>
       <View
         style={{
-          width: 125,
+          width: 100,
           height: 100,
           justifyContent: "center",
           alignItems: "center",
@@ -47,5 +47,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     borderRadius: 20,
+    backgroundColor: "rgba(161, 255, 253,0.2)",
+    borderRadius: 25,
+    width: "95%",
   },
 });
