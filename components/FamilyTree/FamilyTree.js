@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Person from "./Person";
 import { Searchbar } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { FontAwesome6, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const FamilyTree = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -55,8 +56,20 @@ const FamilyTree = () => {
           placeholder="Search by name"
           onChangeText={setSearchQuery}
           value={searchQuery}
-          style={{ width: "90%" }}
+          style={{ width: "80%" }}
         />
+        <View
+          style={{
+            width: 50,
+            height: 100,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity>
+            <MaterialCommunityIcons name={"tree"} size={50} color={"green"} />
+          </TouchableOpacity>
+        </View>
       </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {filteredPersons.map((person, index) => (
@@ -83,6 +96,8 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
   },
   scrollViewContent: {
     paddingBottom: 20,
