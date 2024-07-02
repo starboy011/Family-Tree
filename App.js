@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import { Provider as PaperProvider } from "react-native-paper";
 import LoginScreen1 from "./components/Login/LoginScreen1";
 import BottomTab from "./components/BottomTab/BottomTab";
+import FullFamilyTree from "./components/FamilyTree/FullFamilyTree";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,7 @@ export default function App() {
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="LoginScreen1" component={LoginScreen1} />
               <Stack.Screen name="BottomTab" component={BottomTab} />
+              <Stack.Screen name="FullFamilyTree" component={FullFamilyTree} />
             </>
           )}
         </Stack.Navigator>
