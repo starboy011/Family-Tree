@@ -14,27 +14,28 @@ const FullFamilyTree = () => {
 
   const data = [
     {
-      label: "Argentina",
+      label: "Rishav",
       children: [
         {
-          label: "Argentin",
+          label: "Pranav",
           children: [
             {
-              label: "Argenti",
+              label: "Aishwarya",
             },
             {
-              label: "Croatia",
+              label: "Neha",
             },
           ],
         },
         {
-          label: "France",
+          label: "Manish",
           children: [
             {
-              label: "Franc",
+              label: "Rahul",
             },
             {
-              label: "Morocco",
+              label: "Ayush",
+              children: [{ label: "Akash" }, { label: "Simran" }],
             },
           ],
         },
@@ -55,7 +56,36 @@ const FullFamilyTree = () => {
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
-          <Text style={styles.label}>{nodes.label}</Text>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 30,
+                backgroundColor: "red",
+                marginRight: 10,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  width: 2,
+                  height: 11,
+                  backgroundColor: "black",
+                  marginBottom: 61,
+                }}
+              ></View>
+            </View>
+            <Text style={styles.label}>{nodes.label}</Text>
+          </View>
         </TouchableOpacity>
         {expandedNodes[nodes.label] && nodes.children && (
           <View style={styles.childrenContainer}>
@@ -121,10 +151,10 @@ const styles = StyleSheet.create({
   },
   childrenContainer: {
     flexDirection: "row",
-    marginTop: 10,
-    marginLeft: 20,
+    marginTop: 20,
+    marginLeft: -20,
     borderTopWidth: 1,
-    borderTopColor: "#ccc",
+    borderTopColor: "black",
     paddingTop: 10,
   },
   childNode: {
