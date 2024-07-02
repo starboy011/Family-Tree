@@ -5,8 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Person from "./Person";
 import { Searchbar } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { FontAwesome6, MaterialCommunityIcons } from "@expo/vector-icons";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const FamilyTree = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
   const persons = [
@@ -49,6 +49,7 @@ const FamilyTree = () => {
   const filteredPersons = persons.filter((person) =>
     person.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchContainer}>
@@ -66,7 +67,9 @@ const FamilyTree = () => {
             alignItems: "center",
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("FullFamilyTree")}
+          >
             <MaterialCommunityIcons name={"tree"} size={50} color={"green"} />
           </TouchableOpacity>
         </View>
