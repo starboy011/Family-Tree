@@ -1,18 +1,26 @@
-import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 
 const FullFamilyTree = () => {
+  const [expandedNodes, setExpandedNodes] = useState({});
+
   const data = [
     {
       label: "Argentina",
       children: [
         {
-          label: "Argentina",
+          label: "Argentin",
           children: [
             {
-              label: "Argentina",
+              label: "Argenti",
             },
             {
               label: "Croatia",
@@ -23,7 +31,7 @@ const FullFamilyTree = () => {
           label: "France",
           children: [
             {
-              label: "France",
+              label: "Franc",
             },
             {
               label: "Morocco",
@@ -34,13 +42,22 @@ const FullFamilyTree = () => {
     },
   ];
 
+  const toggleNode = (label) => {
+    setExpandedNodes({
+      ...expandedNodes,
+      [label]: !expandedNodes[label],
+    });
+  };
+
   const renderTree = (nodes) => {
     if (!nodes) return null;
 
     return (
       <View style={styles.node}>
-        <Text style={styles.label}>{nodes.label}</Text>
-        {nodes.children && (
+        <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
+          <Text style={styles.label}>{nodes.label}</Text>
+        </TouchableOpacity>
+        {expandedNodes[nodes.label] && nodes.children && (
           <View style={styles.childrenContainer}>
             {nodes.children.map((child, index) => (
               <View key={index} style={styles.childNode}>
@@ -100,6 +117,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: "bold",
+    textDecorationLine: "underline",
   },
   childrenContainer: {
     flexDirection: "row",
