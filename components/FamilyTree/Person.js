@@ -31,7 +31,7 @@ const Person = ({ name }) => {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontFamily: "serif", fontSize: 20 }}>{name}</Text>
+        <Text style={{ fontFamily: "serif", fontSize: 18 }}>{name}</Text>
       </View>
     </View>
   );
