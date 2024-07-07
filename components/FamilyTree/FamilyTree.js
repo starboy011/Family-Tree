@@ -14,7 +14,7 @@ const FamilyTree = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    fetch("http://192.168.68.123:8080/get-all-names")
+    fetch("http://192.168.68.123:8080/Names")
       .then((response) => response.json())
       .then((data) => {
         const names = data.map((item) => item.data.name);
