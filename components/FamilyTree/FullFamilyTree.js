@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,37 +11,21 @@ import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-vi
 
 const FullFamilyTree = () => {
   const [expandedNodes, setExpandedNodes] = useState({});
+  const [data, setData] = useState(null);
 
-  const data = [
-    {
-      label: "Rishav",
-      children: [
-        {
-          label: "Pranav",
-          children: [
-            {
-              label: "Aishwarya",
-            },
-            {
-              label: "Neha",
-            },
-          ],
-        },
-        {
-          label: "Manish",
-          children: [
-            {
-              label: "Rahul",
-            },
-            {
-              label: "Ayush",
-              children: [{ label: "Akash" }, { label: "Simran" }],
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://192.168.68.123:8080/tree");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleNode = (label) => {
     setExpandedNodes({
@@ -50,39 +34,15 @@ const FullFamilyTree = () => {
     });
   };
 
-  const renderTree = (nodes) => {
+  const renderTree = (nodes, isHead = false) => {
     if (!nodes) return null;
 
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
-          <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <View
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 30,
-                backgroundColor: "red",
-                marginRight: 10,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <View
-                style={{
-                  width: 2,
-                  height: 11,
-                  backgroundColor: "black",
-                  marginBottom: 61,
-                }}
-              ></View>
+          <View style={styles.nodeContent}>
+            <View style={styles.nodeCircle}>
+              {!isHead && <View style={styles.nodeLine}></View>}
             </View>
             <Text style={styles.label}>{nodes.label}</Text>
           </View>
@@ -102,24 +62,23 @@ const FullFamilyTree = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ReactNativeZoomableView
-        maxZoom={5}
-        minZoom={0.1}
-        zoomStep={0.5}
-        initialZoom={1}
-        bindToBorders={true}
-        contentWidth={1000}
-        contentHeight={1000}
-        style={styles.zoomableView}
-      >
-        <ScrollView horizontal>
-          {data.map((node, index) => (
-            <View key={index} style={styles.rootNode}>
-              {renderTree(node)}
-            </View>
-          ))}
-        </ScrollView>
-      </ReactNativeZoomableView>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <ReactNativeZoomableView
+          maxZoom={5}
+          minZoom={0.1}
+          zoomStep={0.5}
+          initialZoom={1}
+          contentWidth={10000000000}
+          contentHeight={10000000}
+          style={styles.zoomableView}
+        >
+          {data ? (
+            <View style={styles.rootNode}>{renderTree(data, true)}</View>
+          ) : (
+            <Text>Loading...</Text>
+          )}
+        </ReactNativeZoomableView>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -129,12 +88,12 @@ export default FullFamilyTree;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
   },
   zoomableView: {
     padding: 10,
-    width: 1000,
-    height: 1000,
   },
   rootNode: {
     flexDirection: "row",
@@ -143,6 +102,26 @@ const styles = StyleSheet.create({
   node: {
     alignItems: "center",
     marginHorizontal: 10,
+  },
+  nodeContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+  },
+  nodeCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    backgroundColor: "red",
+    marginRight: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  nodeLine: {
+    width: 2,
+    height: 11,
+    backgroundColor: "black",
+    marginBottom: 61,
   },
   label: {
     fontSize: 16,
