@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ScrollView, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  ActivityIndicator,
+  Modal,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Person from "./Person";
 import { Searchbar } from "react-native-paper";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const FamilyTree = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [persons, setPersons] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [selectedPerson, setSelectedPerson] = useState(null); // State to store the selected person
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -20,6 +29,7 @@ const FamilyTree = () => {
         const updatedPersons = data.map((item) => ({
           id: item.id,
           name: item.data.name,
+          generation: item.generation,
         }));
         setPersons(updatedPersons);
         setLoading(false);
@@ -33,6 +43,21 @@ const FamilyTree = () => {
   const filteredPersons = persons.filter((person) =>
     person.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handlePersonPress = (person) => {
+    if (person.generation < 5) {
+      setSelectedPerson(person);
+      setShowModal(true);
+    } else {
+      navigation.navigate("FamilyTreeWithId", {
+        personId: person.id,
+      });
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,11 +93,7 @@ const FamilyTree = () => {
             <View key={index} style={styles.personContainer}>
               <TouchableOpacity
                 style={{ width: "100%" }}
-                onPress={() =>
-                  navigation.navigate("FamilyTreeWithId", {
-                    personId: person.id,
-                  })
-                }
+                onPress={() => handlePersonPress(person)}
               >
                 <Person name={person.name} />
               </TouchableOpacity>
@@ -80,6 +101,25 @@ const FamilyTree = () => {
           ))}
         </ScrollView>
       )}
+
+      {/* Modal */}
+      <Modal
+        visible={showModal}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={closeModal} // For Android back button
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>
+              Tree size is huge. Please narrow down your search.
+            </Text>
+            <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+              <Text style={styles.modalButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -96,7 +136,6 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    display: "flex",
     flexDirection: "row",
   },
   scrollViewContent: {
@@ -111,5 +150,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  modalText: {
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  modalButton: {
+    backgroundColor: "green",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  modalButtonText: {
+    color: "white",
+    fontSize: 16,
   },
 });
