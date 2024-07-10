@@ -17,8 +17,11 @@ const FamilyTree = () => {
     fetch("http://192.168.68.123:8080/names")
       .then((response) => response.json())
       .then((data) => {
-        const names = data.map((item) => item.data.name);
-        setPersons(names);
+        const updatedPersons = data.map((item) => ({
+          id: item.id,
+          name: item.data.name,
+        }));
+        setPersons(updatedPersons);
         setLoading(false);
       })
       .catch((error) => {
@@ -28,7 +31,7 @@ const FamilyTree = () => {
   }, []);
 
   const filteredPersons = persons.filter((person) =>
-    person.toLowerCase().includes(searchQuery.toLowerCase())
+    person.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -63,8 +66,15 @@ const FamilyTree = () => {
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {filteredPersons.map((person, index) => (
             <View key={index} style={styles.personContainer}>
-              <TouchableOpacity style={{ width: "100%" }}>
-                <Person name={person} />
+              <TouchableOpacity
+                style={{ width: "100%" }}
+                onPress={() =>
+                  navigation.navigate("FamilyTreeWithId", {
+                    personId: person.id,
+                  })
+                }
+              >
+                <Person name={person.name} />
               </TouchableOpacity>
             </View>
           ))}
