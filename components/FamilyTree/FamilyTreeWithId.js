@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import { useRoute } from "@react-navigation/native";
 
 const FullFamilyTree = () => {
   const [data, setData] = useState(null);
+  const [expandedNodes, setExpandedNodes] = useState({}); // State to keep track of expanded nodes
   const route = useRoute();
   const { personId } = route.params;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,6 +24,13 @@ const FullFamilyTree = () => {
         );
         const result = await response.json();
         setData(result);
+
+        // Initialize expandedNodes with the root node id or any nodes you want to be expanded initially
+        if (result) {
+          const initialExpanded = {};
+          initializeExpandedState(result, initialExpanded);
+          setExpandedNodes(initialExpanded);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -24,18 +39,36 @@ const FullFamilyTree = () => {
     fetchData();
   }, []);
 
+  const initializeExpandedState = (node, expandedState) => {
+    if (node.id) {
+      expandedState[node.id] = true; // Initialize all nodes as expanded initially
+    }
+    if (node.children) {
+      node.children.forEach((child) =>
+        initializeExpandedState(child, expandedState)
+      );
+    }
+  };
+
+  const toggleNode = (nodeId) => {
+    setExpandedNodes((prevExpandedNodes) => ({
+      ...prevExpandedNodes,
+      [nodeId]: !prevExpandedNodes[nodeId],
+    }));
+  };
+
   const renderTree = (nodes, isHead = false) => {
     if (!nodes) return null;
 
     return (
       <View style={styles.node}>
-        <View style={styles.nodeContent}>
-          <View style={styles.nodeCircle}>
-            {!isHead && <View style={styles.nodeLine}></View>}
+        <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
+          <View style={styles.nodeContent}>
+            <View style={styles.nodeCircle} />
+            <Text style={styles.label}>{nodes.label}</Text>
           </View>
-          <Text style={styles.label}>{nodes.label}</Text>
-        </View>
-        {nodes.children && (
+        </TouchableOpacity>
+        {expandedNodes[nodes.id] && nodes.children && (
           <View style={styles.childrenContainer}>
             {nodes.children.map((child, index) => (
               <View key={index} style={styles.childNode}>
@@ -104,12 +137,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     justifyContent: "center",
     alignItems: "center",
-  },
-  nodeLine: {
-    width: 2,
-    height: 11,
-    backgroundColor: "black",
-    marginBottom: 61,
   },
   label: {
     fontSize: 16,
