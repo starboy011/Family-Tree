@@ -41,7 +41,7 @@ export default Person;
 
 const styles = StyleSheet.create({
   container: {
-    width: "98%",
+    width: "95%",
     height: 100,
     marginTop: 10,
     display: "flex",
@@ -49,6 +49,5 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "rgba(161, 255, 253,0.2)",
     borderRadius: 25,
-    width: "95%",
   },
 });

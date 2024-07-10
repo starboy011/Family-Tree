@@ -91,10 +91,7 @@ const FamilyTree = () => {
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           {filteredPersons.map((person, index) => (
             <View key={index} style={styles.personContainer}>
-              <TouchableOpacity
-                style={{ width: "100%" }}
-                onPress={() => handlePersonPress(person)}
-              >
+              <TouchableOpacity onPress={() => handlePersonPress(person)}>
                 <Person name={person.name} />
               </TouchableOpacity>
             </View>
