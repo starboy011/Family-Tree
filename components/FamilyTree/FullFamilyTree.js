@@ -42,12 +42,23 @@ const FullFamilyTree = () => {
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
-          <View style={styles.nodeContentShadow}>
-            <View style={styles.nodeContent}>
-              <View style={styles.nodeCircle}>
-                {!isHead && <View style={styles.nodeLine}></View>}
+          <View style={styles.nodeContainer}>
+            <View
+              style={{
+                backgroundColor: "black",
+                height: 50,
+                width: 10,
+                borderBottomEndRadius: 10,
+                borderBottomLeftRadius: 10,
+              }}
+            ></View>
+            <View style={styles.nodeContentShadow}>
+              <View style={styles.nodeContent}>
+                <View style={styles.nodeCircle}>
+                  {!isHead && <View style={styles.nodeLine}></View>}
+                </View>
+                <Text style={styles.label}>{nodes.label}</Text>
               </View>
-              <Text style={styles.label}>{nodes.label}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -102,9 +113,9 @@ const styles = StyleSheet.create({
   },
   imagecontainer: {
     overflow: "hidden",
-    borderRadius: 100,
-    width: 100,
-    height: 100,
+    borderRadius: 1000,
+    width: 500,
+    height: 500,
   },
   containerError: {
     backgroundColor: "white",
@@ -114,13 +125,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#e7ffe3",
+    backgroundColor: "#fff7e6",
   },
   scrollViewContent: {
     flexGrow: 1,
-  },
-  zoomableView: {
-    padding: 10,
   },
   rootNode: {
     flexDirection: "row",
@@ -140,6 +148,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#e0ffef",
     borderWidth: 0.5,
     borderColor: "grey",
+  },
+  nodeContainer: {
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  selectedNodeContent: {
+    backgroundColor: "#fdffd1",
   },
   nodeContentShadow: {
     width: 285,
@@ -163,18 +179,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textDecorationLine: "underline",
-    height: 40,
+    height: 30,
     width: 250,
     textAlign: "center",
     textAlignVertical: "center",
-    borderRadius: 10,
+    borderRadius: 25,
   },
   childrenContainer: {
     flexDirection: "row",
-    marginTop: 20,
-    borderTopWidth: 1,
-    borderTopColor: "black",
-    paddingTop: 10,
+    marginTop: 30,
+    borderTopWidth: 5,
+    borderRadius: 10,
+    borderTopColor: "#4a453a",
   },
   childNode: {
     marginHorizontal: 10,
