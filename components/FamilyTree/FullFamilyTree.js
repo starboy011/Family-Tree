@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
-import { shadow } from "react-native-paper";
 
 const FullFamilyTree = () => {
   const [expandedNodes, setExpandedNodes] = useState({});
@@ -43,15 +42,17 @@ const FullFamilyTree = () => {
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
           <View style={styles.nodeContainer}>
-            <View
-              style={{
-                backgroundColor: "black",
-                height: 50,
-                width: 10,
-                borderBottomEndRadius: 10,
-                borderBottomLeftRadius: 10,
-              }}
-            ></View>
+            {!isHead && (
+              <View
+                style={{
+                  backgroundColor: "black",
+                  height: 50,
+                  width: 10,
+                  borderBottomEndRadius: 10,
+                  borderBottomLeftRadius: 10,
+                }}
+              ></View>
+            )}
             <View style={styles.nodeContentShadow}>
               <View style={styles.nodeContent}>
                 <View style={styles.nodeCircle}>
