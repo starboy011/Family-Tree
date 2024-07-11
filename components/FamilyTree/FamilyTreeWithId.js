@@ -13,7 +13,7 @@ import { useRoute } from "@react-navigation/native";
 const FullFamilyTree = () => {
   const [data, setData] = useState(null);
   const [expandedNodes, setExpandedNodes] = useState({});
-  const [error, setError] = useState(null); // State for error handling
+  const [error, setError] = useState(null);
   const route = useRoute();
   const { personId } = route.params;
 
@@ -29,7 +29,6 @@ const FullFamilyTree = () => {
         const result = await response.json();
         setData(result);
 
-        // Initialize expandedNodes with the root node id or any nodes you want to be expanded initially
         if (result) {
           const initialExpanded = {};
           initializeExpandedState(result, initialExpanded);
@@ -37,7 +36,7 @@ const FullFamilyTree = () => {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        setError(error.message); // Set error state with the error message
+        setError(error.message);
       }
     };
 
@@ -46,7 +45,7 @@ const FullFamilyTree = () => {
 
   const initializeExpandedState = (node, expandedState) => {
     if (node.id) {
-      expandedState[node.id] = true; // Initialize all nodes as expanded initially
+      expandedState[node.id] = true;
     }
     if (node.children) {
       node.children.forEach((child) =>
@@ -74,6 +73,15 @@ const FullFamilyTree = () => {
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
           <View style={styles.nodeContainer}>
+            <View
+              style={{
+                backgroundColor: "black",
+                height: 50,
+                width: 10,
+                borderBottomEndRadius: 10,
+                borderBottomLeftRadius: 10,
+              }}
+            ></View>
             <View style={styles.nodeContentShadow}>
               <View style={nodeStyle}>
                 <View style={styles.nodeCircle} />
@@ -150,7 +158,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#e7ffe3",
+    backgroundColor: "#fff7e6",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -213,9 +221,9 @@ const styles = StyleSheet.create({
   childrenContainer: {
     flexDirection: "row",
     marginTop: 30,
-    borderTopWidth: 2,
+    borderTopWidth: 5,
     borderRadius: 10,
-    borderTopColor: "black",
+    borderTopColor: "#4a453a",
   },
   childNode: {
     marginHorizontal: 10,
