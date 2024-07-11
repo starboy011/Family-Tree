@@ -61,7 +61,7 @@ const FullFamilyTree = () => {
     }));
   };
 
-  const renderTree = (nodes, personId) => {
+  const renderTree = (nodes, isHead = false) => {
     if (!nodes) return null;
 
     const nodeStyle = [
@@ -73,18 +73,22 @@ const FullFamilyTree = () => {
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
           <View style={styles.nodeContainer}>
-            <View
-              style={{
-                backgroundColor: "black",
-                height: 50,
-                width: 10,
-                borderBottomEndRadius: 10,
-                borderBottomLeftRadius: 10,
-              }}
-            ></View>
+            {!isHead && (
+              <View
+                style={{
+                  backgroundColor: "black",
+                  height: 50,
+                  width: 10,
+                  borderBottomEndRadius: 10,
+                  borderBottomLeftRadius: 10,
+                }}
+              ></View>
+            )}
             <View style={styles.nodeContentShadow}>
               <View style={nodeStyle}>
-                <View style={styles.nodeCircle} />
+                <View style={styles.nodeCircle}>
+                  {!isHead && <View style={styles.nodeLine}></View>}
+                </View>
                 <Text style={styles.label}>{nodes.label}</Text>
               </View>
             </View>
@@ -94,7 +98,7 @@ const FullFamilyTree = () => {
           <View style={styles.childrenContainer}>
             {nodes.children.map((child, index) => (
               <View key={index} style={styles.childNode}>
-                {renderTree(child, personId)}
+                {renderTree(child)}
               </View>
             ))}
           </View>
@@ -122,7 +126,7 @@ const FullFamilyTree = () => {
         contentHeight={10000}
       >
         {data ? (
-          <View style={styles.rootNode}>{renderTree(data, personId)}</View>
+          <View style={styles.rootNode}>{renderTree(data, true)}</View>
         ) : (
           <View style={styles.imagecontainer}>
             <ImageBackground
@@ -227,5 +231,13 @@ const styles = StyleSheet.create({
   },
   childNode: {
     marginHorizontal: 10,
+  },
+  nodeLine: {
+    width: 1,
+    height: 70,
+    backgroundColor: "black",
+    position: "absolute",
+    top: 0,
+    left: 35, // Center the line horizontally in the nodeCircle
   },
 });
