@@ -131,7 +131,17 @@ const FullFamilyTree = () => {
 export default FullFamilyTree;
 
 const styles = StyleSheet.create({
-  imagecontainer: { width: "20%", height: "10%" },
+  backgroundImage: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+  imagecontainer: {
+    overflow: "hidden",
+    borderRadius: 1000,
+    width: 500,
+    height: 500,
+  },
   containerError: {
     backgroundColor: "white",
     height: "100%",
@@ -157,9 +167,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     display: "flex",
-    width: 300,
+    width: 280,
     borderRadius: 20,
-    height: 120,
+    height: 150,
     backgroundColor: "#e0ffef",
     borderWidth: 0.5,
     borderColor: "grey",
@@ -173,9 +183,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fdffd1",
   },
   nodeContentShadow: {
-    width: 305,
+    width: 285,
     borderRadius: 20,
-    height: 125,
+    height: 155,
     backgroundColor: "black",
     borderWidth: 0.5,
     borderColor: "grey",
@@ -202,10 +212,10 @@ const styles = StyleSheet.create({
   },
   childrenContainer: {
     flexDirection: "row",
-    marginTop: 20,
-    borderTopWidth: 1,
+    marginTop: 30,
+    borderTopWidth: 2,
+    borderRadius: 10,
     borderTopColor: "black",
-    paddingTop: 10,
   },
   childNode: {
     marginHorizontal: 10,

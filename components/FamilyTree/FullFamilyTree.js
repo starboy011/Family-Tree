@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
@@ -78,7 +79,12 @@ const FullFamilyTree = () => {
           {data ? (
             <View style={styles.rootNode}>{renderTree(data, true)}</View>
           ) : (
-            <Text>Loading...</Text>
+            <View style={styles.imagecontainer}>
+              <ImageBackground
+                source={require("./SplashScreen.gif")}
+                style={styles.backgroundImage}
+              ></ImageBackground>
+            </View>
           )}
         </ReactNativeZoomableView>
       </ScrollView>
@@ -89,6 +95,17 @@ const FullFamilyTree = () => {
 export default FullFamilyTree;
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+  imagecontainer: {
+    overflow: "hidden",
+    borderRadius: 100,
+    width: 100,
+    height: 100,
+  },
   containerError: {
     backgroundColor: "white",
     height: "100%",
@@ -117,18 +134,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     display: "flex",
-    width: 300,
+    width: 280,
     borderRadius: 20,
-    height: 120,
+    height: 150,
     backgroundColor: "#e0ffef",
     borderWidth: 0.5,
     borderColor: "grey",
   },
   nodeContentShadow: {
-    width: 305,
+    width: 285,
     borderRadius: 20,
-    height: 125,
-    backgroundColor: "green",
+    height: 155,
+    backgroundColor: "black",
     borderWidth: 0.5,
     borderColor: "grey",
   },
@@ -146,11 +163,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textDecorationLine: "underline",
-    height: 30,
+    height: 40,
     width: 250,
     textAlign: "center",
     textAlignVertical: "center",
-    borderRadius: 25,
+    borderRadius: 10,
   },
   childrenContainer: {
     flexDirection: "row",
