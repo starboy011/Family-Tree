@@ -3,9 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   TouchableOpacity,
-  Alert, // Import Alert from React Native
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
@@ -63,22 +62,31 @@ const FullFamilyTree = () => {
     }));
   };
 
-  const renderTree = (nodes, isHead = false) => {
+  const renderTree = (nodes, personId) => {
     if (!nodes) return null;
+
+    const nodeStyle = [
+      styles.nodeContent,
+      nodes.id === personId && styles.selectedNodeContent,
+    ];
 
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
-          <View style={styles.nodeContent}>
-            <View style={styles.nodeCircle} />
-            <Text style={styles.label}>{nodes.label}</Text>
+          <View style={styles.nodeContainer}>
+            <View style={styles.nodeContentShadow}>
+              <View style={nodeStyle}>
+                <View style={styles.nodeCircle} />
+                <Text style={styles.label}>{nodes.label}</Text>
+              </View>
+            </View>
           </View>
         </TouchableOpacity>
         {expandedNodes[nodes.id] && nodes.children && (
           <View style={styles.childrenContainer}>
             {nodes.children.map((child, index) => (
               <View key={index} style={styles.childNode}>
-                {renderTree(child)}
+                {renderTree(child, personId)}
               </View>
             ))}
           </View>
@@ -97,23 +105,25 @@ const FullFamilyTree = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <ReactNativeZoomableView
-          maxZoom={2}
-          minZoom={0.1}
-          zoomStep={1}
-          initialZoom={0.8}
-          contentWidth={10000000000}
-          contentHeight={10000000}
-          style={styles.zoomableView}
-        >
-          {data ? (
-            <View style={styles.rootNode}>{renderTree(data, true)}</View>
-          ) : (
-            <Text>Loading...</Text>
-          )}
-        </ReactNativeZoomableView>
-      </ScrollView>
+      <ReactNativeZoomableView
+        maxZoom={2}
+        minZoom={0.05}
+        zoomStep={1}
+        initialZoom={0.2}
+        contentWidth={100000}
+        contentHeight={10000}
+      >
+        {data ? (
+          <View style={styles.rootNode}>{renderTree(data, personId)}</View>
+        ) : (
+          <View style={styles.imagecontainer}>
+            <ImageBackground
+              source={require("./SplashScreen.gif")}
+              style={styles.backgroundImage}
+            ></ImageBackground>
+          </View>
+        )}
+      </ReactNativeZoomableView>
     </SafeAreaView>
   );
 };
@@ -121,6 +131,7 @@ const FullFamilyTree = () => {
 export default FullFamilyTree;
 
 const styles = StyleSheet.create({
+  imagecontainer: { width: "20%", height: "10%" },
   containerError: {
     backgroundColor: "white",
     height: "100%",
@@ -129,13 +140,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#e7ffe3",
   },
   scrollViewContent: {
     flexGrow: 1,
-  },
-  zoomableView: {
-    padding: 10,
   },
   rootNode: {
     flexDirection: "row",
@@ -153,10 +161,28 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     height: 120,
     backgroundColor: "#e0ffef",
+    borderWidth: 0.5,
+    borderColor: "grey",
+  },
+  nodeContainer: {
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  selectedNodeContent: {
+    backgroundColor: "#fdffd1",
+  },
+  nodeContentShadow: {
+    width: 305,
+    borderRadius: 20,
+    height: 125,
+    backgroundColor: "black",
+    borderWidth: 0.5,
+    borderColor: "grey",
   },
   nodeCircle: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 30,
     backgroundColor: "red",
     marginRight: 10,

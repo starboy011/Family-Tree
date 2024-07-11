@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
+import { shadow } from "react-native-paper";
 
 const FullFamilyTree = () => {
   const [expandedNodes, setExpandedNodes] = useState({});
@@ -40,11 +41,13 @@ const FullFamilyTree = () => {
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.label)}>
-          <View style={styles.nodeContent}>
-            <View style={styles.nodeCircle}>
-              {!isHead && <View style={styles.nodeLine}></View>}
+          <View style={styles.nodeContentShadow}>
+            <View style={styles.nodeContent}>
+              <View style={styles.nodeCircle}>
+                {!isHead && <View style={styles.nodeLine}></View>}
+              </View>
+              <Text style={styles.label}>{nodes.label}</Text>
             </View>
-            <Text style={styles.label}>{nodes.label}</Text>
           </View>
         </TouchableOpacity>
         {expandedNodes[nodes.label] && nodes.children && (
@@ -86,8 +89,15 @@ const FullFamilyTree = () => {
 export default FullFamilyTree;
 
 const styles = StyleSheet.create({
+  containerError: {
+    backgroundColor: "white",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
     flex: 1,
+    backgroundColor: "#e7ffe3",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -104,34 +114,47 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   nodeContent: {
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     display: "flex",
+    width: 300,
+    borderRadius: 20,
+    height: 120,
+    backgroundColor: "#e0ffef",
+    borderWidth: 0.5,
+    borderColor: "grey",
+  },
+  nodeContentShadow: {
+    width: 305,
+    borderRadius: 20,
+    height: 125,
+    backgroundColor: "green",
+    borderWidth: 0.5,
+    borderColor: "grey",
   },
   nodeCircle: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 30,
     backgroundColor: "red",
     marginRight: 10,
     justifyContent: "center",
     alignItems: "center",
   },
-  nodeLine: {
-    width: 2,
-    height: 11,
-    backgroundColor: "black",
-    marginBottom: 61,
-  },
   label: {
+    backgroundColor: "#8fffad",
     fontSize: 16,
     fontWeight: "bold",
     textDecorationLine: "underline",
+    height: 30,
+    width: 250,
+    textAlign: "center",
+    textAlignVertical: "center",
+    borderRadius: 25,
   },
   childrenContainer: {
     flexDirection: "row",
     marginTop: 20,
-    marginLeft: -20,
     borderTopWidth: 1,
     borderTopColor: "black",
     paddingTop: 10,
