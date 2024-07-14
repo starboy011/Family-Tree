@@ -9,6 +9,9 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { ScrollView } from "react-native-gesture-handler";
+import InputSearchContainer from "./InputSearchContainer";
+import KnowByNameContainer from "./KnowByNameContainer";
 
 const FamilyTree = () => {
   const navigation = useNavigation();
@@ -92,6 +95,10 @@ const FamilyTree = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <InputSearchContainer />
+      <ScrollView>
+        <KnowByNameContainer />
+      </ScrollView>
     </SafeAreaView>
   );
 };
