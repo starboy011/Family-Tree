@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { RadioButton } from "react-native-paper";
-const InputSearchContainer = () => {
-  const [checked, setChecked] = React.useState("first");
+
+const InputSearchContainer = ({ selectedOption, setSelectedOption }) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <View
@@ -16,15 +16,15 @@ const InputSearchContainer = () => {
           label="Know by name"
           labelStyle={{ fontSize: 20, fontFamily: "serif" }}
           value="first"
-          status={checked === "first" ? "checked" : "unchecked"}
-          onPress={() => setChecked("second")}
+          status={selectedOption === "first" ? "checked" : "unchecked"}
+          onPress={() => setSelectedOption("first")}
         />
         <RadioButton.Item
           label="Know by key contact"
           labelStyle={{ fontSize: 20, fontFamily: "serif" }}
           value="second"
-          status={checked === "second" ? "checked" : "unchecked"}
-          onPress={() => setChecked("first")}
+          status={selectedOption === "second" ? "checked" : "unchecked"}
+          onPress={() => setSelectedOption("second")}
         />
       </View>
     </View>

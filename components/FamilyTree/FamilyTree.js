@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -12,10 +12,12 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import InputSearchContainer from "./InputSearchContainer";
 import KnowByNameContainer from "./KnowByNameContainer";
+import KnowByKeyContact from "./KnowByKeyContact";
 
 const FamilyTree = () => {
   const navigation = useNavigation();
   const moveAnim = useRef(new Animated.Value(0)).current;
+  const [selectedOption, setSelectedOption] = useState("first");
 
   useEffect(() => {
     const moveRightAndBack = Animated.sequence([
@@ -95,9 +97,16 @@ const FamilyTree = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <InputSearchContainer />
+      <InputSearchContainer
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
       <ScrollView>
-        <KnowByNameContainer />
+        {selectedOption === "first" ? (
+          <KnowByNameContainer />
+        ) : (
+          <KnowByKeyContact />
+        )}
       </ScrollView>
     </SafeAreaView>
   );
