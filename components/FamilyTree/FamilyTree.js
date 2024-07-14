@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Searchbar, Button } from "react-native-paper";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const FamilyTree = () => {
@@ -42,7 +42,16 @@ const FamilyTree = () => {
               VIEW FULL TREE
             </Text>
           </View>
-          <View style={{ width: "30%", height: "100%" }}></View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              width: "30%",
+              height: "100%",
+            }}
+          >
+            <AntDesign name={"arrowright"} size={40} color={"black"} />
+          </View>
         </View>
         <View
           style={{
