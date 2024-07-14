@@ -1,12 +1,35 @@
-import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import React, { useRef, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  Animated,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Searchbar, Button } from "react-native-paper";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const FamilyTree = () => {
   const navigation = useNavigation();
+  const moveAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const moveRightAndBack = Animated.sequence([
+      Animated.timing(moveAnim, {
+        toValue: 10,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.timing(moveAnim, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+    ]);
+
+    Animated.loop(moveRightAndBack).start();
+  }, [moveAnim]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -32,7 +55,7 @@ const FamilyTree = () => {
                 marginLeft: 10,
                 fontSize: 25,
                 color: "black",
-                textShadowColor: "rgba(0, 0, 0, .5)",
+                textShadowColor: "rgba(0, 0, 0, .25)",
                 textShadowOffset: { width: -1, height: 1 },
                 textShadowRadius: 10,
                 textTransform: "uppercase",
@@ -42,16 +65,17 @@ const FamilyTree = () => {
               VIEW FULL TREE
             </Text>
           </View>
-          <View
+          <Animated.View
             style={{
               justifyContent: "center",
               alignItems: "center",
               width: "30%",
               height: "100%",
+              transform: [{ translateX: moveAnim }],
             }}
           >
             <AntDesign name={"arrowright"} size={40} color={"black"} />
-          </View>
+          </Animated.View>
         </View>
         <View
           style={{
