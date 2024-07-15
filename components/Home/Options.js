@@ -9,6 +9,8 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import CustomOption from "./NameOption";
 import NameOption from "./NameOption";
+import Generation from "./Generation";
+import KeyContact from "./KeyContact";
 const { width, height } = Dimensions.get("window");
 
 const Options = () => {
@@ -63,26 +65,14 @@ const Options = () => {
           <View
             style={{
               width: "100%",
-              height: "40%",
+              height: "80%",
               flexDirection: "row",
               paddingTop: 10,
             }}
           >
             <NameOption />
-            <NameOption />
-            <NameOption />
-          </View>
-          <View
-            style={{
-              width: "100%",
-              height: "40%",
-              flexDirection: "row",
-              paddingTop: 10,
-            }}
-          >
-            <NameOption />
-            <NameOption />
-            <NameOption />
+            <Generation />
+            <KeyContact />
           </View>
         </View>
       </View>

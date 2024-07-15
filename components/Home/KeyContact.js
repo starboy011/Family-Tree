@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const NameOption = () => {
+const KeyContact = () => {
   return (
     <View
       style={{
@@ -12,6 +12,7 @@ const NameOption = () => {
         alignItems: "center",
         paddingTop: 20,
       }}
+      Generation
     >
       <TouchableOpacity>
         <View
@@ -31,12 +32,12 @@ const NameOption = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>Option 1</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}>Option 3</Text>
       </View>
     </View>
   );
 };
 
-export default NameOption;
+export default KeyContact;
 
 const styles = StyleSheet.create({});
