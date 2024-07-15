@@ -23,6 +23,7 @@ const KnowByNameContainer = () => {
         }}
       >
         <TextInput
+          placeholder="Please enter the name"
           style={{
             fontFamily: "serif",
             width: "80%",
