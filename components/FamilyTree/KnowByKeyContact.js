@@ -8,17 +8,21 @@ import {
 } from "react-native";
 import axios from "axios";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const KnowByKeyContact = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     axios
       .get("http://192.168.68.123:8080/keyNames")
       .then((response) => {
-        // Extract names from response data
-        const names = response.data.map((item) => item.data.name);
+        const names = response.data.map((item) => ({
+          id: item.id,
+          name: item.data.name,
+        }));
         setData(names);
         setLoading(false);
       })
@@ -27,6 +31,10 @@ const KnowByKeyContact = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleItemPress = (personId) => {
+    navigation.navigate("FamilyTreeWithId", { personId });
+  };
 
   if (loading) {
     return (
@@ -43,7 +51,7 @@ const KnowByKeyContact = () => {
         data={data}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handleItemPress(item.id)}>
             <View style={styles.itemContainer}>
               <View
                 style={{
@@ -62,7 +70,7 @@ const KnowByKeyContact = () => {
                 ></View>
               </View>
               <View style={{ width: "75%", justifyContent: "center" }}>
-                <Text style={styles.itemText}>{item}</Text>
+                <Text style={styles.itemText}>{item.name}</Text>
               </View>
             </View>
           </TouchableOpacity>

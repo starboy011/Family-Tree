@@ -86,9 +86,7 @@ const FullFamilyTree = () => {
             )}
             <View style={styles.nodeContentShadow}>
               <View style={nodeStyle}>
-                <View style={styles.nodeCircle}>
-                  {!isHead && <View style={styles.nodeLine}></View>}
-                </View>
+                <View style={styles.nodeCircle}></View>
                 <Text style={styles.label}>{nodes.label}</Text>
               </View>
             </View>
