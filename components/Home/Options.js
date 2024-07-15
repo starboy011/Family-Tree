@@ -44,7 +44,6 @@ const Options = () => {
               style={{
                 flex: 1,
                 paddingLeft: 15,
-                paddingRight: 15,
                 justifyContent: "center",
                 borderRadius: 10,
               }}
@@ -68,14 +67,21 @@ const Options = () => {
               width: "100%",
               height: "40%",
               flexDirection: "row",
-              paddingTop: 5,
+              paddingTop: 10,
             }}
           >
             <CustomOption />
             <CustomOption />
             <CustomOption />
           </View>
-          <View style={{ width: "100%", height: "40%", flexDirection: "row" }}>
+          <View
+            style={{
+              width: "100%",
+              height: "40%",
+              flexDirection: "row",
+              paddingTop: 10,
+            }}
+          >
             <CustomOption />
             <CustomOption />
             <CustomOption />
