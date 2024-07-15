@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CustomOption = () => {
+const NameOption = () => {
   return (
     <View
       style={{
@@ -34,6 +34,6 @@ const CustomOption = () => {
   );
 };
 
-export default CustomOption;
+export default NameOption;
 
 const styles = StyleSheet.create({});
