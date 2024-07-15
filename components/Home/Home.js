@@ -1,16 +1,19 @@
-import { StyleSheet, Text, View, StatusBar, Dimensions } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
+import { Appbar } from "react-native-paper";
+import NavBar from "./NavBar";
+import Options from "./Options";
 
 const { width, height } = Dimensions.get("window");
 const Home = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
-      </View>
-    </SafeAreaView>
+    <View style={{ backgroundColor: "white", alignItems: "center" }}>
+      <NavBar />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Options />
+      </ScrollView>
+    </View>
   );
 };
 
