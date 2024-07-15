@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import CustomOption from "./CustomOption";
 const { width, height } = Dimensions.get("window");
 
-const Options = () => {
+const Updates = () => {
   return (
     <View
       style={{
@@ -35,9 +29,9 @@ const Options = () => {
       ></LinearGradient>
       <View style={styles.backgroundImage}>
         <View style={styles.container}>
-          <View style={{ width: "100%", height: "20%" }}>
+          <View style={{ width: "100%", height: 60 }}>
             <LinearGradient
-              colors={["#4c669f", "#3b5998", "#192f6a"]}
+              colors={["#ff4d6d", "#c9184a", "#590d22"]}
               style={{
                 flex: 1,
                 paddingLeft: 15,
@@ -52,36 +46,12 @@ const Options = () => {
                   fontFamily: "serif",
                   fontSize: 30,
                   fontWeight: "bold",
-                  color: "white", // Text color
+                  color: "white",
                 }}
               >
-                Explore
+                Updates
               </Text>
             </LinearGradient>
-          </View>
-          <View
-            style={{
-              width: "100%",
-              height: "40%",
-              flexDirection: "row",
-              paddingTop: 10,
-            }}
-          >
-            <CustomOption />
-            <CustomOption />
-            <CustomOption />
-          </View>
-          <View
-            style={{
-              width: "100%",
-              height: "40%",
-              flexDirection: "row",
-              paddingTop: 10,
-            }}
-          >
-            <CustomOption />
-            <CustomOption />
-            <CustomOption />
           </View>
         </View>
       </View>
@@ -94,15 +64,15 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    height: 300,
+    height: 600,
     width: width * 0.95,
     borderRadius: 10,
     overflow: "hidden",
-    backgroundColor: "#F0F8FF",
+    backgroundColor: "#fff0f3",
   },
   container: {
     flex: 1,
   },
 });
 
-export default Options;
+export default Updates;

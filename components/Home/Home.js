@@ -4,6 +4,8 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Appbar } from "react-native-paper";
 import NavBar from "./NavBar";
 import Options from "./Options";
+import Updates from "./Updates";
+import Padding from "./Padding";
 
 const { width, height } = Dimensions.get("window");
 const Home = () => {
@@ -12,6 +14,8 @@ const Home = () => {
       <NavBar />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Options />
+        <Updates />
+        <Padding />
       </ScrollView>
     </View>
   );
