@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
+import { FontAwesome6 } from "@expo/vector-icons";
 const Generation = () => {
   return (
     <View
@@ -21,8 +21,12 @@ const Generation = () => {
             backgroundColor: "white",
             width: 80,
             borderRadius: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        ></View>
+        >
+          <FontAwesome6 name={"people-line"} size={40} color={"#4c669f"} />
+        </View>
       </TouchableOpacity>
       <View
         style={{

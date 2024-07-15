@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
+import { MaterialIcons } from "@expo/vector-icons";
 const NameOption = () => {
   return (
     <View
@@ -20,8 +20,12 @@ const NameOption = () => {
             backgroundColor: "white",
             width: 80,
             borderRadius: 10,
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        ></View>
+        >
+          <MaterialIcons name={"people"} size={50} color={"#4c669f"} />
+        </View>
       </TouchableOpacity>
       <View
         style={{

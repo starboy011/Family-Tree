@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
+import { FontAwesome6 } from "@expo/vector-icons";
 const KeyContact = () => {
   return (
     <View
@@ -21,8 +21,12 @@ const KeyContact = () => {
             backgroundColor: "white",
             width: 80,
             borderRadius: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        ></View>
+        >
+          <FontAwesome6 name={"key"} size={35} color={"#4c669f"} />
+        </View>
       </TouchableOpacity>
       <View
         style={{
