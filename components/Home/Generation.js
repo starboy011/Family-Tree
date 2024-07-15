@@ -32,7 +32,7 @@ const Generation = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>Option 2</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}>Generation</Text>
       </View>
     </View>
   );

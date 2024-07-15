@@ -31,7 +31,7 @@ const NameOption = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>Option 1</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}> Name</Text>
       </View>
     </View>
   );

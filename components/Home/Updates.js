@@ -39,8 +39,8 @@ const Updates = () => {
               sliderWidth={width * 0.95}
               itemWidth={width * 0.7}
               height={"100%"}
-              inactiveSlideScale={0.95}
-              inactiveSlideOpacity={0.5}
+              inactiveSlideScale={0.85}
+              inactiveSlideOpacity={0.1}
               activeSlideAlignment={"center"}
               containerCustomStyle={styles.carousel}
               contentContainerCustomStyle={styles.carouselContentContainer}

@@ -32,7 +32,7 @@ const KeyContact = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>Option 3</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}>Key Contact</Text>
       </View>
     </View>
   );
