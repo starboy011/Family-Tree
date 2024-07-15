@@ -36,10 +36,11 @@ const Updates = () => {
             <Carousel
               data={data}
               renderItem={renderItem}
-              sliderWidth={width}
-              itemWidth={width * 0.75}
-              inactiveSlideScale={0.94}
-              inactiveSlideOpacity={0.7}
+              sliderWidth={width * 0.95}
+              itemWidth={width * 0.7}
+              height={"100%"}
+              inactiveSlideScale={0.95}
+              inactiveSlideOpacity={0.5}
               activeSlideAlignment={"center"}
               containerCustomStyle={styles.carousel}
               contentContainerCustomStyle={styles.carouselContentContainer}
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    height: 600,
+    height: 500,
     width: width * 0.95,
     borderRadius: 10,
     overflow: "hidden",
@@ -91,12 +92,12 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
   carouselContentContainer: {
-    alignItems: "center",
+    // alignItems: "center",
   },
   slide: {
     backgroundColor: "white",
-    borderRadius: 5,
-    height: 150,
+    // borderRadius: 5,
+    height: 400,
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",
