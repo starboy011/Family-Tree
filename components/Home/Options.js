@@ -7,7 +7,8 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import CustomOption from "./CustomOption";
+import CustomOption from "./NameOption";
+import NameOption from "./NameOption";
 const { width, height } = Dimensions.get("window");
 
 const Options = () => {
@@ -55,7 +56,7 @@ const Options = () => {
                   color: "white", // Text color
                 }}
               >
-                Explore
+                Explore by
               </Text>
             </LinearGradient>
           </View>
@@ -67,9 +68,9 @@ const Options = () => {
               paddingTop: 10,
             }}
           >
-            <CustomOption />
-            <CustomOption />
-            <CustomOption />
+            <NameOption />
+            <NameOption />
+            <NameOption />
           </View>
           <View
             style={{
@@ -79,9 +80,9 @@ const Options = () => {
               paddingTop: 10,
             }}
           >
-            <CustomOption />
-            <CustomOption />
-            <CustomOption />
+            <NameOption />
+            <NameOption />
+            <NameOption />
           </View>
         </View>
       </View>

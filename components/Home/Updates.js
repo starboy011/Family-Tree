@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import CustomOption from "./CustomOption";
+import CustomOption from "./NameOption";
 const { width, height } = Dimensions.get("window");
 
 const Updates = () => {
