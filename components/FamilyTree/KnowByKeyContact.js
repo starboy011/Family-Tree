@@ -64,7 +64,7 @@ const KnowByKeyContact = () => {
                   style={{
                     width: 80,
                     height: 80,
-                    backgroundColor: "green",
+                    backgroundColor: "blue",
                     borderRadius: 50,
                   }}
                 ></View>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 90,
     width: "95%",
-    backgroundColor: "rgba(79,255,176,.3)",
+    backgroundColor: "#F0F8FF",
     flexDirection: "row",
   },
   itemText: {
