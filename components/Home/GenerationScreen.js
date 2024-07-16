@@ -5,10 +5,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { RadioButton } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
+import GenerationList from "./GenerationList";
 
 const GenerationScreen = () => {
   const navigation = useNavigation();
-  const [checked, setChecked] = React.useState("7");
+  const [checked, setChecked] = React.useState("10");
 
   return (
     <>
@@ -46,7 +47,7 @@ const GenerationScreen = () => {
                 fontFamily: "serif",
                 fontWeight: "bold",
                 color: "white",
-                marginLeft: 20,
+                marginLeft: 10,
               }}
             >
               Select generation
@@ -124,7 +125,6 @@ const GenerationScreen = () => {
               width: "100%",
               height: "50%",
               flexDirection: "row",
-              flexDirection: "row",
               justifyContent: "space-around",
             }}
           >
@@ -172,6 +172,16 @@ const GenerationScreen = () => {
             />
           </View>
         </View>
+        <View
+          style={{
+            backgroundColor: "rgba(240,248,255,1)",
+            width: "98%",
+            borderRadius: 10,
+            flex: 1,
+          }}
+        >
+          <GenerationList Id={checked} />
+        </View>
       </View>
     </>
   );
@@ -182,6 +192,8 @@ export default GenerationScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
+    flex: 1,
+    alignItems: "center",
   },
   title: {
     width: "100%",
