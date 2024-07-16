@@ -7,7 +7,6 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import CustomOption from "./NameOption";
 import NameOption from "./NameOption";
 import Generation from "./Generation";
 import KeyContact from "./KeyContact";
@@ -24,18 +23,6 @@ const Options = () => {
         borderRadius: 10,
       }}
     >
-      <LinearGradient
-        colors={["#4c669f", "#3b5998", "#192f6a"]}
-        style={{
-          flex: 1,
-          paddingLeft: 15,
-          paddingRight: 15,
-          justifyContent: "center",
-          borderRadius: 10,
-        }}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-      ></LinearGradient>
       <View style={styles.backgroundImage}>
         <View style={styles.container}>
           <View style={{ width: "100%", height: "20%" }}>

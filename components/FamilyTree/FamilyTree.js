@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { StyleSheet, Animated } from "react-native";
+import { StyleSheet, Animated, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -28,9 +28,8 @@ const FamilyTree = () => {
   }, [moveAnim]);
 
   return (
-    // <SafeAreaView style={styles.container}>
-    <>
-      <Appbar.Header style={{ backgroundColor: "rgba(79,255,176,.1)" }}>
+    <View style={styles.container}>
+      <Appbar.Header style={{ backgroundColor: "#F0F8FF" }}>
         <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Home" />
         <Appbar.Action
@@ -45,8 +44,7 @@ const FamilyTree = () => {
       <ScrollView>
         <KnowByKeyContact />
       </ScrollView>
-    </>
-    // </SafeAreaView>
+    </View>
   );
 };
 
