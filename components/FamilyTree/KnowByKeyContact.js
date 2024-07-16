@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  ImageBackground,
 } from "react-native";
 import axios from "axios";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -22,6 +23,7 @@ const KnowByKeyContact = () => {
         const names = response.data.map((item) => ({
           id: item.id,
           name: item.data.name,
+          img: item.data.img,
         }));
         setData(names);
         setLoading(false);
@@ -50,26 +52,23 @@ const KnowByKeyContact = () => {
       <FlatList
         data={data}
         keyExtractor={(item, index) => index.toString()}
+        style={{ width: "95%" }}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => handleItemPress(item.id)}>
             <View style={styles.itemContainer}>
-              <View
+              <ImageBackground
+                source={{ uri: item.img }}
                 style={{
-                  width: "25%",
+                  width: 80,
+                  height: 80,
+                  borderRadius: 50,
                   justifyContent: "center",
                   alignItems: "center",
+                  overflow: "hidden",
+                  marginLeft: 10,
                 }}
-              >
-                <View
-                  style={{
-                    width: 80,
-                    height: 80,
-                    backgroundColor: "blue",
-                    borderRadius: 50,
-                  }}
-                ></View>
-              </View>
-              <View style={{ width: "75%", justifyContent: "center" }}>
+              />
+              <View style={{ marginLeft: 10, justifyContent: "center" }}>
                 <Text style={styles.itemText}>{item.name}</Text>
               </View>
             </View>
@@ -96,14 +95,16 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     borderRadius: 10,
-    margin: 10,
+    marginTop: 10,
     height: 90,
-    width: "95%",
+    width: "100%",
     backgroundColor: "#F0F8FF",
     flexDirection: "row",
+    alignItems: "center",
   },
   itemText: {
     fontSize: 16,
     marginLeft: 10,
+    fontFamily: "serif",
   },
 });
