@@ -41,7 +41,6 @@ const FamilyTree = () => {
           }}
         />
       </Appbar.Header>
-
       <KnowByKeyContact />
     </View>
   );
