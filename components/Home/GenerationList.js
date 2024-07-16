@@ -41,9 +41,11 @@ const GenerationList = ({ Id }) => {
 
   if (loading) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading...</Text>
+      <View style={styles.imagecontainer}>
+        <ImageBackground
+          source={require("./SplashScreen.gif")}
+          style={styles.backgroundImage}
+        ></ImageBackground>
       </View>
     );
   }
@@ -110,5 +112,18 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 16,
     marginLeft: 10,
+  },
+  imagecontainer: {
+    overflow: "hidden",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  backgroundImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    overflow: "hidden",
   },
 });
