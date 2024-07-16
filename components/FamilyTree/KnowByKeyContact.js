@@ -41,8 +41,10 @@ const KnowByKeyContact = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading...</Text>
+        <ImageBackground
+          source={require("./SplashScreen.gif")}
+          style={styles.backgroundImage}
+        ></ImageBackground>
       </View>
     );
   }
@@ -83,15 +85,20 @@ const KnowByKeyContact = () => {
 export default KnowByKeyContact;
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    width: 100,
+    height: 100,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   loadingContainer: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
+    height: "90%",
   },
   itemContainer: {
     borderRadius: 10,
