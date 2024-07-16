@@ -10,6 +10,7 @@ import LoginScreen1 from "./components/Login/LoginScreen1";
 import BottomTab from "./components/BottomTab/BottomTab";
 import FullFamilyTree from "./components/FamilyTree/FullFamilyTree";
 import FamilyTreeWithId from "./components/FamilyTree/FamilyTreeWithId";
+import FamilyTree from "./components/FamilyTree/FamilyTree";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
               <Stack.Screen name="LoginScreen1" component={LoginScreen1} />
               <Stack.Screen name="BottomTab" component={BottomTab} />
               <Stack.Screen name="FullFamilyTree" component={FullFamilyTree} />
+              <Stack.Screen name="FamilyTree" component={FamilyTree} />
               <Stack.Screen
                 name="FamilyTreeWithId"
                 component={FamilyTreeWithId}
