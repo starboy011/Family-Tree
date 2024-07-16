@@ -2,7 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const KeyContact = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -14,7 +16,7 @@ const KeyContact = () => {
       }}
       Generation
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("FamilyTree")}>
         <View
           style={{
             height: 80,
