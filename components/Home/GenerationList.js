@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  ImageBackground,
 } from "react-native";
 import axios from "axios";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -23,6 +24,7 @@ const GenerationList = ({ Id }) => {
         const names = response.data.map((item) => ({
           id: item.id,
           name: item.data.name,
+          img: item.data.img,
         }));
         setData(names);
         setLoading(false);
@@ -61,14 +63,17 @@ const GenerationList = ({ Id }) => {
                   alignItems: "center",
                 }}
               >
-                <View
+                <ImageBackground
+                  source={{ uri: item.img }}
                   style={{
                     width: 80,
                     height: 80,
-                    backgroundColor: "blue",
                     borderRadius: 50,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    overflow: "hidden",
                   }}
-                ></View>
+                />
               </View>
               <View style={{ width: "75%", justifyContent: "center" }}>
                 <Text style={styles.itemText}>{item.name}</Text>
@@ -89,7 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 10,
   },
   loadingContainer: {
     flex: 1,
