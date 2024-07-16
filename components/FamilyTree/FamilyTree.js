@@ -41,9 +41,8 @@ const FamilyTree = () => {
           }}
         />
       </Appbar.Header>
-      <ScrollView>
-        <KnowByKeyContact />
-      </ScrollView>
+
+      <KnowByKeyContact />
     </View>
   );
 };

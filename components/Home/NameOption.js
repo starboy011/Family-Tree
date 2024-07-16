@@ -2,7 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const NameOption = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -13,7 +15,7 @@ const NameOption = () => {
         paddingTop: 20,
       }}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Relationship")}>
         <View
           style={{
             height: 80,
