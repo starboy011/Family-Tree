@@ -2,7 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome6 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const Generation = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -14,7 +16,7 @@ const Generation = () => {
       }}
       Generation
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("GenerationScreen")}>
         <View
           style={{
             height: 80,

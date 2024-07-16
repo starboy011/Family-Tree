@@ -1,13 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Text,
-  Animated,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+import { StyleSheet, Animated } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import KnowByKeyContact from "./KnowByKeyContact";
@@ -16,7 +9,6 @@ import { Appbar } from "react-native-paper";
 const FamilyTree = () => {
   const navigation = useNavigation();
   const moveAnim = useRef(new Animated.Value(0)).current;
-  const [selectedOption, setSelectedOption] = useState("first");
 
   useEffect(() => {
     const moveRightAndBack = Animated.sequence([
@@ -39,7 +31,7 @@ const FamilyTree = () => {
     // <SafeAreaView style={styles.container}>
     <>
       <Appbar.Header style={{ backgroundColor: "rgba(79,255,176,.1)" }}>
-        <Appbar.BackAction onPress={() => {}} />
+        <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Home" />
         <Appbar.Action
           icon={() => (
