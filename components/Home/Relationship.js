@@ -1,16 +1,30 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Appbar } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { TextInput } from "react-native-paper";
+import RelationshipTree from "../FamilyTree/RelationshipTree";
 
 const Relationship = () => {
   const navigation = useNavigation();
-  const [secondName, setSecondName] = React.useState("");
-  const [firstName, setFirstName] = React.useState("");
+  const [secondName, setSecondName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [showRelationshipTree, setShowRelationshipTree] = useState(false);
+
+  const handleFirstName = (value) => {
+    setFirstName(value);
+    setShowRelationshipTree(false);
+  };
+  const handleSecondName = (value) => {
+    setSecondName(value);
+    setShowRelationshipTree(false);
+  };
+  const handleFindRelationship = () => {
+    setShowRelationshipTree(true);
+  };
 
   return (
     <>
@@ -59,13 +73,13 @@ const Relationship = () => {
         <TextInput
           label="First Name"
           value={firstName}
-          onChangeText={(text) => setFirstName(text)}
+          onChangeText={handleFirstName}
           style={{ width: "95%", marginTop: 10 }}
         />
         <TextInput
           label="Second Name"
           value={secondName}
-          onChangeText={(text) => setSecondName(text)}
+          onChangeText={handleSecondName}
           style={{ width: "95%", marginTop: 10 }}
         />
         <View style={styles.findrelationship}>
@@ -83,7 +97,7 @@ const Relationship = () => {
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleFindRelationship}>
               <Text
                 style={{
                   fontSize: 20,
@@ -100,6 +114,11 @@ const Relationship = () => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
+        {showRelationshipTree && (
+          <View>
+            <RelationshipTree firstName={firstName} secondName={secondName} />
+          </View>
+        )}
       </View>
     </>
   );
