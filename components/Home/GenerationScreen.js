@@ -55,11 +55,11 @@ const GenerationScreen = () => {
             </Text>
           </LinearGradient>
         </View>
-        <View style={{ width: "100%", height: 150 }}>
+        <View style={{ width: "100%", height: 100 }}>
           <View
             style={{
               width: "100%",
-              height: "50%",
+              height: 40,
               flexDirection: "row",
               justifyContent: "space-around",
             }}
@@ -124,7 +124,7 @@ const GenerationScreen = () => {
           <View
             style={{
               width: "100%",
-              height: "50%",
+              height: 40,
               flexDirection: "row",
               justifyContent: "space-around",
             }}
