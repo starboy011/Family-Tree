@@ -34,6 +34,7 @@ const GenerationScreen = () => {
               flex: 1,
               paddingLeft: 15,
               paddingRight: 15,
+              marginTop: 10,
               justifyContent: "center",
               borderRadius: 10,
               width: "95%",
