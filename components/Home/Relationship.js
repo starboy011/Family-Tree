@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Appbar } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { RadioButton } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
-import GenerationList from "./GenerationList";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput } from "react-native-paper";
 
 const Relationship = () => {
   const navigation = useNavigation();
-  const [checked, setChecked] = React.useState("10");
+  const [secondName, setSecondName] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
 
   return (
     <>
@@ -56,6 +56,18 @@ const Relationship = () => {
             </Text>
           </LinearGradient>
         </View>
+        <TextInput
+          label="First Name"
+          value={firstName}
+          onChangeText={(text) => setFirstName(text)}
+          style={{ width: "95%", marginTop: 10 }}
+        />
+        <TextInput
+          label="Second Name"
+          value={secondName}
+          onChangeText={(text) => setSecondName(text)}
+          style={{ width: "95%", marginTop: 10 }}
+        />
         <View style={styles.findrelationship}>
           <LinearGradient
             colors={["#f29479", "#ef3c2d", "#cb1b16"]}
