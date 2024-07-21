@@ -13,10 +13,28 @@ import FamilyTreeWithId from "./components/FamilyTree/FamilyTreeWithId";
 import FamilyTree from "./components/FamilyTree/FamilyTree";
 import GenerationScreen from "./components/Home/GenerationScreen";
 import Relationship from "./components/Home/Relationship";
-
+import messaging from "@react-native-firebase/messaging";
+import firebase from "@react-native-firebase/app";
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
+
+  const checkFcm = async () => {
+    try {
+      const fcm = await messaging().getToken();
+      setToken(fcm);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    checkFcm();
+  });
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {

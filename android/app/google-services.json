@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "449680703932",
+    "project_id": "mulvansham-186e2",
+    "storage_bucket": "mulvansham-186e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449680703932:android:475639a7819a9a8cea2bb9",
+        "android_client_info": {
+          "package_name": "com.starboy011.Mulvansham"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcDM_s2mfKdauRiHrkfyAeNod5aDhGY0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
