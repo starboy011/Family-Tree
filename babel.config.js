@@ -4,11 +4,7 @@ module.exports = function (api) {
     presets: ["babel-preset-expo"],
     env: {
       production: {
-        plugins: [
-          "react-native-paper/babel",
-          "@react-native-firebase/app",
-          "@react-native-firebase/auth",
-        ],
+        plugins: ["react-native-paper/babel"],
       },
     },
   };
