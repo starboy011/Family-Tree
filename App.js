@@ -19,9 +19,18 @@ const Stack = createStackNavigator();
 
 export default function App() {
   const [token, setToken] = useState("");
-
   useEffect(() => {
     console.log(token);
+    if (token) {
+      fetch(`http://192.168.68.123:8080/fcm/${token}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).catch((error) => {
+        console.error("Error:", error);
+      });
+    }
   }, [token]);
 
   const checkFcm = async () => {
