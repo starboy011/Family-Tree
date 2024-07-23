@@ -10,6 +10,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import NameOption from "./NameOption";
 import Generation from "./Generation";
 import KeyContact from "./KeyContact";
+import OurHistory from "./OurHistory";
 const { width, height } = Dimensions.get("window");
 
 const Options = () => {
@@ -25,7 +26,7 @@ const Options = () => {
     >
       <View style={styles.backgroundImage}>
         <View style={styles.container}>
-          <View style={{ width: "100%", height: "20%" }}>
+          <View style={{ width: "100%", height: 60 }}>
             <LinearGradient
               colors={["#4c669f", "#3b5998", "#192f6a"]}
               style={{
@@ -52,14 +53,22 @@ const Options = () => {
           <View
             style={{
               width: "100%",
-              height: "80%",
+              height: 180,
               flexDirection: "row",
-              paddingTop: 10,
             }}
           >
             <NameOption />
             <Generation />
             <KeyContact />
+          </View>
+          <View
+            style={{
+              width: "100%",
+              height: 180,
+              flexDirection: "row",
+            }}
+          >
+            <OurHistory />
           </View>
         </View>
       </View>
@@ -72,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    height: 300,
+    height: 450,
     width: width * 0.95,
     borderRadius: 10,
     overflow: "hidden",

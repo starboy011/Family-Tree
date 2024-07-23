@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ImageBackground,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Carousel from "react-native-snap-carousel";
 
@@ -7,16 +13,58 @@ const { width } = Dimensions.get("window");
 
 const Updates = () => {
   const data = [
-    { title: "Slide 1" },
+    {
+      title: "Slide 1",
+    },
     { title: "Slide 2" },
     { title: "Slide 3" },
   ];
 
-  const renderItem = ({ item }) => (
-    <View style={styles.slide}>
-      <Text style={styles.slideText}>{item.title}</Text>
-    </View>
-  );
+  const renderItem = ({ item }) => {
+    if (item.title === "Slide 3") {
+      return (
+        <ImageBackground
+          source={require("/Users/starboy/Repos/Family-Tree/components/Home/Developedby.png")}
+          style={styles.slide}
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              fontFamily: "serif",
+              color: "white",
+              backgroundColor: "rgba(0,0,0,0.5)",
+            }}
+          >
+            Developed By: Rishav Choudhary (s/o Mithilesh Choudhary)
+          </Text>
+        </ImageBackground>
+      );
+    } else if (item.title === "Slide 2") {
+      return (
+        <ImageBackground
+          source={require("/Users/starboy/Repos/Family-Tree/components/Home/DataCollectedBy.png")}
+          style={styles.slide}
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              fontFamily: "serif",
+              color: "white",
+              backgroundColor: "rgba(0,0,0,0.5)",
+            }}
+          >
+            Data collected by: Tushar Kant Choudhary
+          </Text>
+        </ImageBackground>
+      );
+    }
+
+    return (
+      <View style={styles.slide}>
+        <Text style={styles.slideText}>{item.title}</Text>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -40,7 +88,7 @@ const Updates = () => {
               itemWidth={width * 0.7}
               height={"100%"}
               inactiveSlideScale={0.85}
-              inactiveSlideOpacity={0.1}
+              inactiveSlideOpacity={0.4}
               activeSlideAlignment={"center"}
               containerCustomStyle={styles.carousel}
               contentContainerCustomStyle={styles.carouselContentContainer}
@@ -96,10 +144,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     backgroundColor: "white",
-    // borderRadius: 5,
     height: 400,
-    justifyContent: "center",
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -108,10 +153,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    borderRadius: 5,
+    overflow: "hidden",
+    justifyContent: "flex-end",
   },
   slideText: {
     fontSize: 16,
     fontWeight: "bold",
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
