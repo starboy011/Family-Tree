@@ -11,6 +11,7 @@ import Carousel from "react-native-snap-carousel";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
+import Video from "./Video";
 const { width } = Dimensions.get("window");
 const OurHistoryData = () => {
   const navigation = useNavigation();
@@ -142,8 +143,9 @@ const OurHistoryData = () => {
         <View
           style={{
             width: "100%",
-            height: "100%",
             backgroundColor: "white",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <View style={styles.carouselContainer}>
@@ -219,6 +221,20 @@ const OurHistoryData = () => {
                 </Text>
               </View>
             </View>
+          </View>
+          <View
+            style={{
+              width: "90%",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 300,
+              backgroundColor: "rgba(215,225,15,0.1)",
+              borderRadius: 20,
+              marginTop: 10,
+              marginBottom: 10,
+            }}
+          >
+            <Video />
           </View>
           <View style={styles.detail2}>
             <View style={{ backgroundColor: "rgba(200, 247, 197,.4)" }}>
