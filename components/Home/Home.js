@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import Options from "./Options";
 import Updates from "./Updates";
 import Padding from "./Padding";
+import Credits from "./Credits";
 
 const { width, height } = Dimensions.get("window");
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Options />
         <Updates />
+        <Credits />
         <Padding />
       </ScrollView>
     </View>
