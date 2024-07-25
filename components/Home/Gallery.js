@@ -11,7 +11,42 @@ const Gallery = () => {
         <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Home" />
       </Appbar.Header>
-      <ScrollView></ScrollView>
+      <ScrollView>
+        <View
+          style={{
+            width: "100%",
+            backgroundColor: "white",
+            height: 300,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "red",
+              width: "95%",
+              height: "95%",
+              borderRadius: 10,
+              overflow: "hidden",
+              justifyContent: "flex-end",
+            }}
+          >
+            <View style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+              <Text
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  textAlignVertical: "center",
+                  fontFamily: "serif",
+                  fontSize: 25,
+                }}
+              >
+                Rishav
+              </Text>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
     </>
   );
 };
