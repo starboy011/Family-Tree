@@ -21,44 +21,6 @@ const Updates = () => {
   ];
 
   const renderItem = ({ item }) => {
-    if (item.title === "Slide 3") {
-      return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/Developedby.png")}
-          style={styles.slide}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              fontFamily: "serif",
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-            }}
-          >
-            Developed By: Rishav Choudhary (s/o Mithilesh Choudhary)
-          </Text>
-        </ImageBackground>
-      );
-    } else if (item.title === "Slide 2") {
-      return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/DataCollectedBy.png")}
-          style={styles.slide}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              fontFamily: "serif",
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-            }}
-          >
-            Data collected by: Tushar Kant Choudhary
-          </Text>
-        </ImageBackground>
-      );
-    }
-
     return (
       <View style={styles.slide}>
         <Text style={styles.slideText}>{item.title}</Text>
