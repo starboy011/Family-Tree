@@ -47,10 +47,10 @@ const Updates = () => {
               data={data}
               renderItem={renderItem}
               sliderWidth={width * 0.95}
-              itemWidth={width * 0.7}
+              itemWidth={width * 0.8}
               height={"100%"}
-              inactiveSlideScale={0.85}
-              inactiveSlideOpacity={0.4}
+              inactiveSlideScale={0.95}
+              inactiveSlideOpacity={0.5}
               activeSlideAlignment={"center"}
               containerCustomStyle={styles.carousel}
               contentContainerCustomStyle={styles.carouselContentContainer}
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    height: 500,
+    height: 200,
     width: width * 0.95,
     borderRadius: 10,
     overflow: "hidden",
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     backgroundColor: "white",
-    height: 400,
+    height: 80,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -114,10 +114,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 3,
     borderRadius: 5,
     overflow: "hidden",
-    justifyContent: "flex-end",
+    justifyContent: "center",
+    alignItems: "center",
   },
   slideText: {
     fontSize: 16,
