@@ -6,41 +6,78 @@ import { useNavigation } from "@react-navigation/native";
 const OurHistory = () => {
   const navigation = useNavigation();
   return (
-    <View
-      style={{
-        width: "33.33%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: 20,
-      }}
-      Generation
-    >
-      <TouchableOpacity onPress={() => navigation.navigate("OurHistoryData")}>
+    <>
+      <View
+        style={{
+          width: "33.33%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 20,
+        }}
+        Generation
+      >
+        <TouchableOpacity onPress={() => navigation.navigate("OurHistoryData")}>
+          <View
+            style={{
+              height: 80,
+              backgroundColor: "white",
+              width: 80,
+              borderRadius: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FontAwesome6 name={"book"} size={35} color={"#4c669f"} />
+          </View>
+        </TouchableOpacity>
         <View
           style={{
             height: 80,
-            backgroundColor: "white",
-            width: 80,
-            borderRadius: 10,
+            width: "100%",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <FontAwesome6 name={"book"} size={35} color={"#4c669f"} />
+          <Text style={{ color: "black", fontWeight: "bold" }}>History</Text>
         </View>
-      </TouchableOpacity>
+      </View>
       <View
         style={{
-          height: 80,
-          width: "100%",
+          width: "33.33%",
+          height: "100%",
           justifyContent: "center",
           alignItems: "center",
+          paddingTop: 20,
         }}
+        Generation
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>History</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Gallery")}>
+          <View
+            style={{
+              height: 80,
+              backgroundColor: "white",
+              width: 80,
+              borderRadius: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FontAwesome6 name={"images"} size={35} color={"#4c669f"} />
+          </View>
+        </TouchableOpacity>
+        <View
+          style={{
+            height: 80,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: "black", fontWeight: "bold" }}>Gallery </Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 

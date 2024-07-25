@@ -15,6 +15,7 @@ import GenerationScreen from "./components/Home/GenerationScreen";
 import Relationship from "./components/Home/Relationship";
 import messaging from "@react-native-firebase/messaging";
 import OurHistoryData from "./components/Home/OurHistoryData";
+import Gallery from "./components/Home/Gallery";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
               <Stack.Screen name="FamilyTree" component={FamilyTree} />
               <Stack.Screen name="Relationship" component={Relationship} />
               <Stack.Screen name="OurHistoryData" component={OurHistoryData} />
+              <Stack.Screen name="Gallery" component={Gallery} />
 
               <Stack.Screen
                 name="GenerationScreen"
