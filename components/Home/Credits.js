@@ -19,11 +19,10 @@ const Credits = () => {
     { title: "Slide 2" },
     { title: "Slide 3" },
     { title: "Slide 4" },
-    { title: "Slide 5" },
   ];
 
   const renderItem = ({ item }) => {
-    if (item.title === "Slide 5") {
+    if (item.title === "Slide 4") {
       return (
         <ImageBackground
           source={require("/Users/starboy/Repos/Family-Tree/components/Home/Developedby.png")}
@@ -74,24 +73,6 @@ const Credits = () => {
             }}
           >
             Coordinated/Sound given by: Mithilesh Kumar Choudhary
-          </Text>
-        </ImageBackground>
-      );
-    } else if (item.title === "Slide 4") {
-      return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/DesignedBy.png")}
-          style={styles.slide}
-        >
-          <Text
-            style={{
-              fontSize: 18,
-              fontFamily: "serif",
-              color: "white",
-              backgroundColor: "rgba(0,0,0,0.5)",
-            }}
-          >
-            Designed by: Manish Choudhary (s/o Tushar Kant Choudhary)
           </Text>
         </ImageBackground>
       );
