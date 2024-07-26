@@ -25,7 +25,7 @@ const Credits = () => {
     if (item.title === "Slide 4") {
       return (
         <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/Developedby.png")}
+          source={require("./Developedby.png")}
           style={styles.slide}
         >
           <Text
@@ -43,7 +43,7 @@ const Credits = () => {
     } else if (item.title === "Slide 1") {
       return (
         <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/DataCollectedBy.png")}
+          source={require("./DataCollectedBy.png")}
           style={styles.slide}
         >
           <Text
@@ -61,7 +61,7 @@ const Credits = () => {
     } else if (item.title === "Slide 2") {
       return (
         <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/CoordinatedBy.png")}
+          source={require("./CoordinatedBy.png")}
           style={styles.slide}
         >
           <Text
@@ -79,7 +79,7 @@ const Credits = () => {
     } else if (item.title === "Slide 3") {
       return (
         <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/ContentBy.png")}
+          source={require("./ContentBy.png")}
           style={styles.slide}
         >
           <Text

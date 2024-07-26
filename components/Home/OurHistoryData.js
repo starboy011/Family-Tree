@@ -28,10 +28,7 @@ const OurHistoryData = () => {
   const renderItem = ({ item }) => {
     if (item.title === "Slide 1") {
       return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/1.jpg")}
-          style={styles.slide}
-        >
+        <ImageBackground source={require("./1.jpg")} style={styles.slide}>
           <Text
             style={{
               textAlign: "center",
@@ -49,10 +46,7 @@ const OurHistoryData = () => {
       );
     } else if (item.title === "Slide 2") {
       return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/2.jpg")}
-          style={styles.slide}
-        >
+        <ImageBackground source={require("./2.jpg")} style={styles.slide}>
           <Text
             style={{
               textAlign: "center",
@@ -70,10 +64,7 @@ const OurHistoryData = () => {
       );
     } else if (item.title === "Slide 3") {
       return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/3.jpg")}
-          style={styles.slide}
-        >
+        <ImageBackground source={require("./3.jpg")} style={styles.slide}>
           <Text
             style={{
               textAlign: "center",
@@ -91,10 +82,7 @@ const OurHistoryData = () => {
       );
     } else if (item.title === "Slide 4") {
       return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/4.jpg")}
-          style={styles.slide}
-        >
+        <ImageBackground source={require("./4.jpg")} style={styles.slide}>
           <Text
             style={{
               textAlign: "center",
@@ -112,10 +100,7 @@ const OurHistoryData = () => {
       );
     } else {
       return (
-        <ImageBackground
-          source={require("/Users/starboy/Repos/Family-Tree/components/Home/5.jpg")}
-          style={styles.slide}
-        >
+        <ImageBackground source={require("./5.jpg")} style={styles.slide}>
           <Text
             style={{
               textAlign: "center",

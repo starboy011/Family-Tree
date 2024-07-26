@@ -24,7 +24,7 @@ const Gallery = () => {
           }}
         >
           <ImageBackground
-            source={require("/Users/starboy/Repos/Family-Tree/components/Home/ContentBy.png")}
+            source={require("./ContentBy.png")}
             style={{
               width: "95%",
               height: "95%",
