@@ -7,7 +7,7 @@ const OurHistory = () => {
   const navigation = useNavigation();
   const sendWhatsAppMessage = () => {
     const phoneNumber = "+916203702516";
-    const message = `Namaste%2C%0A%0AI%20am%20%5BYour%20Name%5D%2C%20son%20of%20%5BFather%27s%20Name%5D.%20I%20would%20like%20to%20request%20an%20update%20to%20the%20family%20tree.%0A%0APlease%20add%20details%20for%20the%20updation%3A%0A%0A-%20%5BDetails%20to%20be%20added%5D%0A%0AThank%20you%20for%20your%20assistance.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D`;
+    const message = `Namaste%20%5BYour%20relationship%20with%20Mithilesh%20Choudhary%5D%2C%0A%0AI%20am%20%5BYour%20Name%5D%2C%20son%20of%20%5BFather%27s%20Name%5D.%20I%20would%20like%20to%20request%20an%20update%20to%20the%20family%20tree.%0A%0APlease%20add%20details%20for%20the%20updation%3A%0A%0A-%20%5BDetails%20to%20be%20added%5D%0A%0AThank%20you%20for%20your%20assistance.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D`;
 
     const url = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
 
