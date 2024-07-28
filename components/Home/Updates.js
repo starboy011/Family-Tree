@@ -1,29 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Dimensions,
-  ImageBackground,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Carousel from "react-native-snap-carousel";
+import axios from "axios";
 
 const { width } = Dimensions.get("window");
 
 const Updates = () => {
-  const data = [
-    {
-      title: "Slide 1",
-    },
-    { title: "Slide 2" },
-    { title: "Slide 3" },
-  ];
+  const [responseData, setResponseData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const currentdate = `${yyyy}-${mm}-${dd}`;
+
+    axios
+      .get(`http://192.168.68.123:8080/updates/${currentdate}`)
+      .then((response) => {
+        setResponseData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
-        <Text style={styles.slideText}>{item.title}</Text>
+        <View
+          style={{
+            width: "100%",
+            height: "80%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "serif",
+              backgroundColor: "rgba(255, 196, 204,0.2)",
+              borderRadius: 10,
+              paddingLeft: 10,
+              paddingRight: 10,
+            }}
+          >
+            {item.Message}
+          </Text>
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: "20%",
+            alignItems: "flex-end",
+          }}
+        >
+          <Text style={styles.slideText}>{item.Timestamp}</Text>
+        </View>
       </View>
     );
   };
@@ -43,18 +87,22 @@ const Updates = () => {
             </LinearGradient>
           </View>
           <View style={styles.carouselContainer}>
-            <Carousel
-              data={data}
-              renderItem={renderItem}
-              sliderWidth={width * 0.95}
-              itemWidth={width * 0.8}
-              height={"100%"}
-              inactiveSlideScale={0.95}
-              inactiveSlideOpacity={0.5}
-              activeSlideAlignment={"center"}
-              containerCustomStyle={styles.carousel}
-              contentContainerCustomStyle={styles.carouselContentContainer}
-            />
+            {loading ? (
+              <ActivityIndicator size="large" color="#c9184a" />
+            ) : (
+              <Carousel
+                data={responseData}
+                renderItem={renderItem}
+                sliderWidth={width * 0.95}
+                itemWidth={width * 0.8}
+                height={"100%"}
+                inactiveSlideScale={0.95}
+                inactiveSlideOpacity={0.5}
+                activeSlideAlignment={"center"}
+                containerCustomStyle={styles.carousel}
+                contentContainerCustomStyle={styles.carouselContentContainer}
+              />
+            )}
           </View>
         </View>
       </View>
@@ -97,6 +145,7 @@ const styles = StyleSheet.create({
   },
   carouselContainer: {
     marginTop: 20,
+    alignItems: "center", // Center the loader horizontally
   },
   carousel: {
     flexGrow: 0,
@@ -106,7 +155,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     backgroundColor: "white",
-    height: 80,
+    height: 100,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -117,12 +166,12 @@ const styles = StyleSheet.create({
     elevation: 3,
     borderRadius: 5,
     overflow: "hidden",
-    justifyContent: "center",
-    alignItems: "center",
   },
   slideText: {
     fontSize: 16,
     fontWeight: "bold",
+    marginRight: 10,
+    textAlignVertical: "center",
   },
   imageBackground: {
     flex: 1,
