@@ -5,21 +5,25 @@ import Credits from "../Home/Credits";
 import Options from "../Home/Options";
 import Updates from "../Home/Updates";
 import Padding from "../Home/Padding";
+import Login from "./Login";
+import NavBar from "../Home/NavBar";
 const AdminLogin = () => {
   return (
-    <SafeAreaView>
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-        }}
-      >
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Credits />
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+    // <SafeAreaView>
+    <View
+      style={{
+        width: "100%",
+        height: "100%",
+        alignItems: "center",
+      }}
+    >
+      <NavBar />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Credits />
+        <Login />
+      </ScrollView>
+    </View>
+    // </SafeAreaView>
   );
 };
 
