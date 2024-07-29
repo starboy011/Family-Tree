@@ -4,8 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import Home from "../Home/Home";
-import Search from "../Search/Search";
-import FamilyTree from "../FamilyTree/FamilyTree";
+import AdminLogin from "../AdminLogin/AdminLogin";
 
 const Tab = createBottomTabNavigator();
 const { width, height } = Dimensions.get("window");
@@ -67,8 +66,8 @@ const BottomTab = () => {
               iconName = "home";
             } else if (route.name === "Face") {
               iconName = "family-tree";
-            } else if (route.name === "Search") {
-              iconName = "account-search";
+            } else if (route.name === "Login") {
+              iconName = "login";
             }
             const size = focused ? 30 : 25;
             return (
@@ -87,13 +86,8 @@ const BottomTab = () => {
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name="Face"
-          component={FamilyTree}
-          options={{ headerShown: false }}
-        />
-        <Tab.Screen
-          name="Search"
-          component={Search}
+          name="Login"
+          component={AdminLogin}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>
