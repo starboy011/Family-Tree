@@ -16,7 +16,6 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Options />
         <Updates />
-        <Credits />
         <Padding />
       </ScrollView>
     </View>
