@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,11 +7,12 @@ import {
   ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import NavBar from "../Home/NavBar";
-
+import { TextInput } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const { width } = Dimensions.get("window");
 
 const Login = () => {
+  const [username, setUsername] = React.useState("");
   return (
     <View style={styles.mainContainer}>
       <View style={styles.backgroundImage}>
@@ -25,6 +26,47 @@ const Login = () => {
             >
               <Text style={styles.headerText}>Admin login</Text>
             </LinearGradient>
+          </View>
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: 210,
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <TextInput
+            label="Username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+            style={{ width: "95%" }}
+          />
+          <TextInput
+            label="Password"
+            secureTextEntry
+            style={{ width: "95%" }}
+          />
+          <View
+            style={{
+              width: "95%",
+              height: 50,
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                width: 100,
+                height: 40,
+                backgroundColor: "#ff8400",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 10,
+              }}
+            >
+              <Text style={{ fontFamily: "serif", fontSize: 20 }}>Login</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
