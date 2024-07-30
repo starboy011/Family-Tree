@@ -9,7 +9,14 @@ import Padding from "./Padding";
 const { width, height } = Dimensions.get("window");
 const Home = () => {
   return (
-    <View style={{ backgroundColor: "white", alignItems: "center" }}>
+    <View
+      style={{
+        backgroundColor: "white",
+        alignItems: "center",
+        height: "100%",
+        width: "100%",
+      }}
+    >
       <NavBar />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Options />

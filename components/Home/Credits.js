@@ -9,7 +9,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import Carousel from "react-native-snap-carousel";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 const Credits = () => {
   const data = [
@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    height: 500,
     width: width * 0.95,
     borderRadius: 10,
     overflow: "hidden",
@@ -182,7 +181,8 @@ const styles = StyleSheet.create({
   },
   slide: {
     backgroundColor: "white",
-    height: 400,
+    height: height * 0.5,
+    marginBottom: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

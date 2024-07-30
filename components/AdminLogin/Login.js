@@ -48,12 +48,16 @@ const Login = () => {
             value={username}
             onChangeText={(text) => setUsername(text)}
             style={{ width: "95%" }}
+            backgroundColor={"white"}
+            activeUnderlineColor="#ff8400"
           />
           <TextInput
             label="Password"
             secureTextEntry
             style={{ width: "95%" }}
             onChangeText={(text) => setPassword(text)}
+            backgroundColor={"white"}
+            activeUnderlineColor="#ff8400"
           />
           <View
             style={{
