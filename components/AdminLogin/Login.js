@@ -1,18 +1,25 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { TextInput } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 const { width } = Dimensions.get("window");
 
 const Login = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const HandleLogin = () => {
+    if (username == "" && password == "") {
+      navigation.navigate("Admin");
+    } else {
+      Alert.alert(
+        "Invalid",
+        "Wrong username or password, please contact Admin"
+      );
+    }
+  };
   return (
     <View style={styles.mainContainer}>
       <View style={styles.backgroundImage}>
@@ -46,6 +53,7 @@ const Login = () => {
             label="Password"
             secureTextEntry
             style={{ width: "95%" }}
+            onChangeText={(text) => setPassword(text)}
           />
           <View
             style={{
@@ -64,6 +72,7 @@ const Login = () => {
                 alignItems: "center",
                 borderRadius: 10,
               }}
+              onPress={HandleLogin}
             >
               <Text style={{ fontFamily: "serif", fontSize: 20 }}>Login</Text>
             </TouchableOpacity>
