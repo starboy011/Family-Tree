@@ -1,12 +1,10 @@
 import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import { Appbar } from "react-native-paper";
 import NavBar from "./NavBar";
 import Options from "./Options";
 import Updates from "./Updates";
 import Padding from "./Padding";
-import Credits from "./Credits";
 
 const { width, height } = Dimensions.get("window");
 const Home = () => {
