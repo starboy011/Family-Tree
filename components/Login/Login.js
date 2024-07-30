@@ -67,7 +67,7 @@ const Login = () => {
       <View style={styles.field}>
         <TouchableOpacity
           style={{ width: "90%" }}
-          onPress={() => navigation.navigate("LoginScreen1")}
+          onPress={() => navigation.navigate("BottomTab")}
         >
           <Button icon="tree" mode="contained" buttonColor="blue">
             Get In

@@ -64,8 +64,6 @@ const BottomTab = () => {
 
             if (route.name === "Home") {
               iconName = "home";
-            } else if (route.name === "Face") {
-              iconName = "family-tree";
             } else if (route.name === "Login") {
               iconName = "login";
             }
