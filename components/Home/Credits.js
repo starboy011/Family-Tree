@@ -27,6 +27,11 @@ const Credits = () => {
         <ImageBackground
           source={require("./Developedby.png")}
           style={styles.slide}
+          imageStyle={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "center",
+          }}
         >
           <Text
             style={{
@@ -45,6 +50,11 @@ const Credits = () => {
         <ImageBackground
           source={require("./DataCollectedBy.png")}
           style={styles.slide}
+          imageStyle={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "center",
+          }}
         >
           <Text
             style={{
@@ -63,6 +73,11 @@ const Credits = () => {
         <ImageBackground
           source={require("./CoordinatedBy.png")}
           style={styles.slide}
+          imageStyle={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "center",
+          }}
         >
           <Text
             style={{
@@ -81,6 +96,11 @@ const Credits = () => {
         <ImageBackground
           source={require("./ContentBy.png")}
           style={styles.slide}
+          imageStyle={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "center",
+          }}
         >
           <Text
             style={{
@@ -180,18 +200,9 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   slide: {
-    backgroundColor: "white",
+    backgroundColor: "rgba(116, 212, 119,0.5)",
     height: height * 0.5,
     marginBottom: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    borderRadius: 5,
     overflow: "hidden",
     justifyContent: "flex-end",
   },
