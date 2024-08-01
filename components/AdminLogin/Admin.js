@@ -8,7 +8,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 const Admin = () => {
   const navigation = useNavigation();
   const [text, setText] = React.useState("");
+  const [title, setTitle] = React.useState("");
   const [disable, setDisable] = React.useState(true);
+  const handleTitleChange = (inputText) => {
+    if (inputText.length <= 40) {
+      setTitle(inputText);
+      setDisable(false);
+    }
+  };
   const handleTextChange = (inputText) => {
     if (inputText.length <= 60) {
       setText(inputText);
@@ -28,14 +35,20 @@ const Admin = () => {
           },
           {
             text: "Yes",
-            onPress: () => console.log("Notification sent"),
+            onPress: handlePress,
           },
         ],
         { cancelable: false }
       );
     }
   };
+  const handlePress = () => {
+    fetch(`http://192.168.68.123:8080/sendNotification/${title}/${text}`, {
+      method: "GET",
+    });
 
+    Alert.alert("Congratulations", "Notification initinated successfully");
+  };
   return (
     <>
       <Appbar.Header style={{ backgroundColor: "#fff1e0" }}>
@@ -62,6 +75,14 @@ const Admin = () => {
           </LinearGradient>
         </View>
         <View style={{ width: "100%", alignItems: "center" }}>
+          <TextInput
+            label="Notification title"
+            value={title}
+            style={{ width: "95%", marginTop: 20 }}
+            onChangeText={handleTitleChange}
+            backgroundColor={"white"}
+            activeUnderlineColor="#ff8400"
+          />
           <TextInput
             label="Notification message"
             value={text}
