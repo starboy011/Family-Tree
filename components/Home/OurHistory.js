@@ -14,7 +14,10 @@ const OurHistory = () => {
     Linking.canOpenURL(url)
       .then((supported) => {
         if (!supported) {
-          Alert.alert("Error", "WhatsApp is not installed on your device");
+          Alert.alert(
+            "Error",
+            "Native WhatsApp is not installed on your device"
+          );
         } else {
           return Linking.openURL(url);
         }

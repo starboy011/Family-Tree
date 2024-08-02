@@ -94,7 +94,7 @@ const Admin = () => {
           />
           <Text
             style={{ marginTop: 10, alignSelf: "flex-end", marginRight: 20 }}
-          >{`${text.length}/60`}</Text>
+          >{`${text.length}/60 `}</Text>
         </View>
         <View
           style={{
