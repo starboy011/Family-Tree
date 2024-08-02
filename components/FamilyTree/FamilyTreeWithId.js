@@ -209,7 +209,6 @@ const styles = StyleSheet.create({
     width: 85,
     height: 85,
     borderRadius: 30,
-    backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
