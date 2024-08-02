@@ -1,8 +1,9 @@
 import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
 import { Appbar } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 const NavBar = () => {
-  const _handleSearch = () => console.log("Searching");
+  const navigation = useNavigation();
   return (
     <View style={{ alignItems: "center" }}>
       <Appbar.Header
@@ -12,7 +13,11 @@ const NavBar = () => {
           titleStyle={{ fontFamily: "serif", fontWeight: 800 }}
           title="MULVANSHAM"
         />
-        <Appbar.Action icon="magnify" size={40} onPress={_handleSearch} />
+        <Appbar.Action
+          icon="magnify"
+          size={40}
+          onPress={() => navigation.navigate("Search")}
+        />
       </Appbar.Header>
     </View>
   );
