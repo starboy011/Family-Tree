@@ -73,22 +73,26 @@ const FullFamilyTree = () => {
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
           <View style={styles.nodeContainer}>
-            {!isHead && (
-              <View
-                style={{
-                  backgroundColor: "black",
-                  height: 50,
-                  width: 10,
-                  borderBottomEndRadius: 10,
-                  borderBottomLeftRadius: 10,
-                }}
-              ></View>
-            )}
-            <View style={styles.nodeContentShadow}>
-              <View style={nodeStyle}>
-                <View style={styles.nodeCircle}></View>
-                <Text style={styles.label}>{nodes.label}</Text>
-              </View>
+            <ImageBackground
+              source={require("./leaf.png")}
+              style={{
+                height: 300,
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View style={styles.nodeCircle}></View>
+            </ImageBackground>
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                height: 80,
+                width: "100%",
+              }}
+            >
+              <Text style={styles.label}>{nodes.label}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -160,7 +164,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff7e6",
+    backgroundColor: "white",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -185,9 +189,8 @@ const styles = StyleSheet.create({
     borderColor: "grey",
   },
   nodeContainer: {
-    height: 200,
-    justifyContent: "center",
-    alignItems: "center",
+    height: 350,
+    width: 300,
   },
   selectedNodeContent: {
     backgroundColor: "#fdffd1",
@@ -196,26 +199,24 @@ const styles = StyleSheet.create({
     width: 285,
     borderRadius: 20,
     height: 155,
-    backgroundColor: "black",
-    borderWidth: 0.5,
-    borderColor: "grey",
+    justifyContent: "center",
   },
   nodeCircle: {
-    width: 70,
-    height: 70,
+    marginTop: 20,
+    width: 85,
+    height: 85,
     borderRadius: 30,
     backgroundColor: "red",
-    marginRight: 10,
     justifyContent: "center",
     alignItems: "center",
   },
   label: {
-    backgroundColor: "#8fffad",
-    fontSize: 16,
+    color: "black",
+    fontSize: 26,
     fontWeight: "bold",
     textDecorationLine: "underline",
     height: 30,
-    width: 250,
+    width: 340,
     textAlign: "center",
     textAlignVertical: "center",
     borderRadius: 25,
@@ -229,13 +230,5 @@ const styles = StyleSheet.create({
   },
   childNode: {
     marginHorizontal: 10,
-  },
-  nodeLine: {
-    width: 1,
-    height: 70,
-    backgroundColor: "black",
-    position: "absolute",
-    top: 0,
-    left: 35, // Center the line horizontally in the nodeCircle
   },
 });
