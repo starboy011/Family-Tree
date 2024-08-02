@@ -82,7 +82,10 @@ const FullFamilyTree = () => {
                 alignItems: "center",
               }}
             >
-              <View style={styles.nodeCircle}></View>
+              <ImageBackground
+                source={{ uri: nodes.img }}
+                style={styles.nodeCircle}
+              ></ImageBackground>
             </ImageBackground>
             <View
               style={{
@@ -209,10 +212,11 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
+    overflow: "hidden",
   },
   label: {
     color: "black",
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "bold",
     textDecorationLine: "underline",
     height: 30,
