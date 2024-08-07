@@ -88,7 +88,6 @@ const Gallery = () => {
                   style={{
                     width: "87%",
                     height: 335,
-                    backgroundColor: "red",
                   }}
                 >
                   <ImageBackground
