@@ -21,7 +21,7 @@ const FullFamilyTree = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://192.168.68.123:8080/tree/${personId}`
+          `http://clientapp.skylasoft.com:8085/tree/${personId}`
         );
         if (!response.ok) {
           throw new Error("No Data found");

@@ -17,7 +17,9 @@ const FullFamilyTree = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://192.168.68.123:8080/tree");
+        const response = await fetch(
+          "http://clientapp.skylasoft.com:8085/tree"
+        );
         const result = await response.json();
         setData(result);
       } catch (error) {
