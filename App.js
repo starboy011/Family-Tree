@@ -25,7 +25,7 @@ export default function App() {
   useEffect(() => {
     console.log(token);
     if (token) {
-      fetch(`http://192.168.68.123:8080/fcm/${token}`, {
+      fetch(`http://clientapp.skylasoft.com:8085/fcm/${token}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

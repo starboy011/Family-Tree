@@ -18,7 +18,7 @@ const KnowByKeyContact = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.68.123:8080/keyNames")
+      .get("http://clientapp.skylasoft.com:8085/keyNames")
       .then((response) => {
         const names = response.data.map((item) => ({
           id: item.id,

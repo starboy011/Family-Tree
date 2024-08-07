@@ -43,9 +43,12 @@ const Admin = () => {
     }
   };
   const handlePress = () => {
-    fetch(`http://192.168.68.123:8080/sendNotification/${title}/${text}`, {
-      method: "GET",
-    });
+    fetch(
+      `http://clientapp.skylasoft.com:8085/sendNotification/${title}/${text}`,
+      {
+        method: "GET",
+      }
+    );
 
     Alert.alert("Congratulations", "Notification initinated successfully");
   };
