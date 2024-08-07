@@ -64,11 +64,6 @@ const FullFamilyTree = () => {
   const renderTree = (nodes, isHead = false) => {
     if (!nodes) return null;
 
-    const nodeStyle = [
-      styles.nodeContent,
-      nodes.id === personId && styles.selectedNodeContent,
-    ];
-
     return (
       <View style={styles.node}>
         <TouchableOpacity onPress={() => toggleNode(nodes.id)}>
@@ -126,7 +121,7 @@ const FullFamilyTree = () => {
         maxZoom={2}
         minZoom={0.05}
         zoomStep={1}
-        initialZoom={0.2}
+        initialZoom={0.3}
         contentWidth={100000}
         contentHeight={10000}
       >
@@ -178,7 +173,7 @@ const styles = StyleSheet.create({
   },
   node: {
     alignItems: "center",
-    marginHorizontal: 10,
+    marginHorizontal: 30,
   },
   nodeContent: {
     justifyContent: "space-around",
@@ -193,7 +188,7 @@ const styles = StyleSheet.create({
   },
   nodeContainer: {
     height: 350,
-    width: 300,
+    width: 350,
   },
   selectedNodeContent: {
     backgroundColor: "#fdffd1",
@@ -206,8 +201,8 @@ const styles = StyleSheet.create({
   },
   nodeCircle: {
     marginTop: 20,
-    width: 85,
-    height: 85,
+    width: 100,
+    height: 100,
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
@@ -215,11 +210,11 @@ const styles = StyleSheet.create({
   },
   label: {
     color: "black",
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: "bold",
     textDecorationLine: "underline",
-    height: 30,
-    width: 340,
+    height: 40,
+    width: 400,
     textAlign: "center",
     textAlignVertical: "center",
     borderRadius: 25,

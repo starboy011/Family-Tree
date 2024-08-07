@@ -39,6 +39,7 @@ const Credits = () => {
               fontFamily: "serif",
               color: "white",
               backgroundColor: "rgba(0,0,0,0.5)",
+              height: 40,
             }}
           >
             Developed By: Rishav Choudhary (s/o Mithilesh Kumar Choudhary)
@@ -62,6 +63,7 @@ const Credits = () => {
               fontFamily: "serif",
               color: "white",
               backgroundColor: "rgba(0,0,0,0.5)",
+              height: 40,
             }}
           >
             Data collected by: Tushar Kant Choudhary
@@ -85,6 +87,7 @@ const Credits = () => {
               fontFamily: "serif",
               color: "white",
               backgroundColor: "rgba(0,0,0,0.5)",
+              height: 40,
             }}
           >
             Coordinated/Sound given by: Mithilesh Kumar Choudhary
@@ -108,6 +111,7 @@ const Credits = () => {
               fontFamily: "serif",
               color: "white",
               backgroundColor: "rgba(0,0,0,0.5)",
+              height: 40,
             }}
           >
             Video editing/Content/Sound given by: Malti Choudhary (w/o Mithilesh
@@ -200,7 +204,6 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   slide: {
-    backgroundColor: "rgba(116, 212, 119,0.5)",
     height: height * 0.5,
     marginBottom: 20,
     overflow: "hidden",

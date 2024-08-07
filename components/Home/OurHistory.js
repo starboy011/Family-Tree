@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Linking, Alert } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { FontAwesome6, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome6, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const OurHistory = () => {
   const navigation = useNavigation();
@@ -35,20 +35,19 @@ const OurHistory = () => {
           alignItems: "center",
           paddingTop: 20,
         }}
-        Generation
       >
-        <TouchableOpacity onPress={() => navigation.navigate("OurHistoryData")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Relationship")}>
           <View
             style={{
               height: 80,
               backgroundColor: "white",
               width: 80,
               borderRadius: 10,
-              justifyContent: "center",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <FontAwesome6 name={"book"} size={35} color={"#4c669f"} />
+            <MaterialIcons name={"people"} size={50} color={"#4c669f"} />
           </View>
         </TouchableOpacity>
         <View
@@ -59,7 +58,10 @@ const OurHistory = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "black", fontWeight: "bold" }}>History</Text>
+          <Text style={{ color: "black", fontWeight: "bold" }}>
+            {" "}
+            Relationship
+          </Text>
         </View>
       </View>
       <View

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome6 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const NameOption = () => {
   const navigation = useNavigation();
@@ -15,18 +15,18 @@ const NameOption = () => {
         paddingTop: 20,
       }}
     >
-      <TouchableOpacity onPress={() => navigation.navigate("Relationship")}>
+      <TouchableOpacity onPress={() => navigation.navigate("OurHistoryData")}>
         <View
           style={{
             height: 80,
             backgroundColor: "white",
             width: 80,
             borderRadius: 10,
-            alignItems: "center",
             justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <MaterialIcons name={"people"} size={50} color={"#4c669f"} />
+          <FontAwesome6 name={"book"} size={35} color={"#4c669f"} />
         </View>
       </TouchableOpacity>
       <View
@@ -37,7 +37,7 @@ const NameOption = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}> Names</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}>History</Text>
       </View>
     </View>
   );

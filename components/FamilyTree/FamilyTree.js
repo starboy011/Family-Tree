@@ -32,14 +32,6 @@ const FamilyTree = () => {
       <Appbar.Header style={{ backgroundColor: "#F0F8FF" }}>
         <Appbar.BackAction onPress={() => navigation.goBack()} />
         <Appbar.Content title="Home" />
-        <Appbar.Action
-          icon={() => (
-            <MaterialCommunityIcons name="tree" size={25} color="black" />
-          )}
-          onPress={() => {
-            navigation.navigate("FullFamilyTree");
-          }}
-        />
       </Appbar.Header>
       <KnowByKeyContact />
     </View>
