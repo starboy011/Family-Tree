@@ -26,7 +26,7 @@ const Search = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `http://clientapp.skylasoft.com:8085/search/${name}`
+        `http://192.168.68.116:8080/search/${name}`
       );
       if (response.data && response.data.length > 0) {
         setResults(response.data);
