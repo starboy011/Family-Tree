@@ -45,14 +45,19 @@ const Login = () => {
           style={[styles.title, { transform: [{ translateX: slideAnim }] }]}
         >
           <Text
-            variant="displayMedium"
+            variant="displaySmall"
             style={{
+              fontSize: 50,
               fontWeight: "bold",
               fontFamily: "serif",
-              letterSpacing: -3,
+              height: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              textAlignVertical: "center",
             }}
           >
-            Mulvansham
+            मूलवंशम्
           </Text>
         </Animated.View>
       </View>
@@ -86,6 +91,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "15%",
     marginTop: "15%",
+    // backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     display: "flex",

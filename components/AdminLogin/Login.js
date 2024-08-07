@@ -11,7 +11,7 @@ const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const HandleLogin = () => {
-    if (username == "" && password == "") {
+    if (username == "mulvansham" && password == "jaiguru") {
       navigation.navigate("Admin");
     } else {
       Alert.alert(
