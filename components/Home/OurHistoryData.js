@@ -58,7 +58,7 @@ const OurHistoryData = () => {
               backgroundColor: "rgba(0,0,0,0.5)",
             }}
           >
-            महोबा के चौबे से चौधरी का सफ़र
+            पनसांई से धोबई की यात्रा
           </Text>
         </ImageBackground>
       );
@@ -76,7 +76,8 @@ const OurHistoryData = () => {
               backgroundColor: "rgba(0,0,0,0.5)",
             }}
           >
-            महोबा के चौबे से चौधरी का सफ़र
+            सर्वाबाधाविनिर्मुक्तो धनधान्यसुतान्वित:। मनुष्यो मत्प्रसादेन
+            भविष्यति न संशय: ॥
           </Text>
         </ImageBackground>
       );
@@ -94,7 +95,7 @@ const OurHistoryData = () => {
               backgroundColor: "rgba(0,0,0,0.5)",
             }}
           >
-            महोबा के चौबे से चौधरी का सफ़र
+            कुल की कीर्ति के सम्वाहक
           </Text>
         </ImageBackground>
       );

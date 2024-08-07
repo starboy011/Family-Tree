@@ -37,7 +37,7 @@ const NameOption = () => {
           alignItems: "center",
         }}
       >
-        <Text style={{ color: "black", fontWeight: "bold" }}>History</Text>
+        <Text style={{ color: "black", fontWeight: "bold" }}>About Us</Text>
       </View>
     </View>
   );
