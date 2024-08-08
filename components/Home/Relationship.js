@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import React, { useState } from "react";
 import { Appbar } from "react-native-paper";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -13,12 +12,17 @@ const Relationship = () => {
   const [secondName, setSecondName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [relationshipData, setRelationshipData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleFirstName = (value) => {
     setFirstName(value);
   };
+
   const handleSecondName = (value) => {
     setSecondName(value);
   };
+
   const findNodeInChildren = (rootNode, targetId) => {
     if (rootNode.id === 0 && rootNode.children) {
       for (let child of rootNode.children) {
@@ -31,30 +35,38 @@ const Relationship = () => {
   };
 
   const handleFindRelationship = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch(
         `http://192.168.68.116:8080/relationship/${firstName}/${secondName}`
       );
       const data = await response.json();
-      setRelationshipData(data);
+      setLoading(false);
 
-      // Ensure data is not null before accessing it
-      if (data && data.id === 0) {
-        const subtree = findNodeInChildren(data, 1);
-        if (subtree) {
-          console.log("Subtree found:", JSON.stringify(subtree));
-          // Navigate to the RelationshipTree component and pass the subtree
-          navigation.navigate("RelationshipTree", { subtree });
+      if (response.ok) {
+        setRelationshipData(data);
+
+        // Ensure data is not null before accessing it
+        if (data && data.id === 0) {
+          const subtree = findNodeInChildren(data, 1);
+          if (subtree) {
+            console.log("Subtree found:", JSON.stringify(subtree));
+            // Navigate to the RelationshipTree component and pass the subtree
+            navigation.navigate("RelationshipTree", { subtree });
+          } else {
+            console.log("Subtree not found");
+            setError("Subtree not found");
+          }
         } else {
-          console.log("Subtree not found");
+          setError("Invalid data structure or no matching root node with id 0");
         }
       } else {
-        console.log(
-          "Invalid data structure or no matching root node with id 0"
-        );
+        setError("Name not found");
       }
     } catch (error) {
-      console.error("Error fetching relationship data:", error);
+      setLoading(false);
+      setError("No Name found ");
     }
   };
 
@@ -138,12 +150,22 @@ const Relationship = () => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
+
+        {/* Show loading indicator */}
+        {loading && (
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={{ marginTop: 20 }}
+          />
+        )}
+
+        {/* Show error message */}
+        {error && <Text style={styles.errorText}>{error}</Text>}
       </View>
     </>
   );
 };
-
-export default Relationship;
 
 const styles = StyleSheet.create({
   container: {
@@ -163,4 +185,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  errorText: {
+    color: "red",
+    marginTop: 20,
+    fontSize: 16,
+    textAlign: "center",
+  },
 });
+
+export default Relationship;
