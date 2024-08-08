@@ -24,7 +24,7 @@ const Updates = () => {
     const currentdate = `${yyyy}-${mm}-${dd}`;
 
     axios
-      .get(`http://192.168.68.116:8080/updates/${currentdate}`)
+      .get(`http://192.168.68.116:8085/updates/${currentdate}`)
       .then((response) => {
         setResponseData(response.data);
         setLoading(false);

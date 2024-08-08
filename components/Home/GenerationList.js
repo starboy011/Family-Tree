@@ -19,7 +19,7 @@ const GenerationList = ({ Id }) => {
   useEffect(() => {
     setLoading(true); // Start loading when the ID changes
     axios
-      .get(`http://192.168.68.116:8080/generation/${Id}`)
+      .get(`http://192.168.68.116:8085/generation/${Id}`)
       .then((response) => {
         const names = response.data.map((item) => ({
           id: item.id,
