@@ -39,7 +39,7 @@ const Relationship = () => {
     setError(null);
     try {
       const response = await fetch(
-        `http://192.168.68.116:8080/relationship/${firstName}/${secondName}`
+        `http://192.168.68.116:8085/relationship/${firstName}/${secondName}`
       );
       const data = await response.json();
       setLoading(false);

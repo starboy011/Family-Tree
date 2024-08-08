@@ -18,7 +18,7 @@ const Gallery = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.68.116:8080/imageGallery")
+      .get("http://192.168.68.116:8085/imageGallery")
       .then((response) => {
         setData(response.data);
         setLoading(false);

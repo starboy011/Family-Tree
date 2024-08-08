@@ -43,7 +43,7 @@ const Admin = () => {
     }
   };
   const handlePress = () => {
-    fetch(`http://192.168.68.116:8080/sendNotification/${title}/${text}`, {
+    fetch(`http://192.168.68.116:8085/sendNotification/${title}/${text}`, {
       method: "GET",
     });
 
