@@ -12,18 +12,50 @@ const Relationship = () => {
   const navigation = useNavigation();
   const [secondName, setSecondName] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [showRelationshipTree, setShowRelationshipTree] = useState(false);
-
+  const [relationshipData, setRelationshipData] = useState(null);
   const handleFirstName = (value) => {
     setFirstName(value);
-    setShowRelationshipTree(false);
   };
   const handleSecondName = (value) => {
     setSecondName(value);
-    setShowRelationshipTree(false);
   };
-  const handleFindRelationship = () => {
-    setShowRelationshipTree(true);
+  const findNodeInChildren = (rootNode, targetId) => {
+    if (rootNode.id === 0 && rootNode.children) {
+      for (let child of rootNode.children) {
+        if (child.id === targetId) {
+          return child;
+        }
+      }
+    }
+    return null;
+  };
+
+  const handleFindRelationship = async () => {
+    try {
+      const response = await fetch(
+        `http://192.168.68.116:8080/relationship/${firstName}/${secondName}`
+      );
+      const data = await response.json();
+      setRelationshipData(data);
+
+      // Ensure data is not null before accessing it
+      if (data && data.id === 0) {
+        const subtree = findNodeInChildren(data, 1);
+        if (subtree) {
+          console.log("Subtree found:", JSON.stringify(subtree));
+          // Navigate to the RelationshipTree component and pass the subtree
+          navigation.navigate("RelationshipTree", { subtree });
+        } else {
+          console.log("Subtree not found");
+        }
+      } else {
+        console.log(
+          "Invalid data structure or no matching root node with id 0"
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching relationship data:", error);
+    }
   };
 
   return (
@@ -106,11 +138,6 @@ const Relationship = () => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
-        {showRelationshipTree && (
-          <View>
-            <RelationshipTree firstName={firstName} secondName={secondName} />
-          </View>
-        )}
       </View>
     </>
   );

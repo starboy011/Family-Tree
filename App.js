@@ -18,6 +18,7 @@ import OurHistoryData from "./components/Home/OurHistoryData";
 import Gallery from "./components/Home/Gallery";
 import Admin from "./components/AdminLogin/Admin";
 import Search from "./components/Home/Search";
+import RelationshipTree from "./components/FamilyTree/RelationshipTree";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -75,6 +76,10 @@ export default function App() {
               <Stack.Screen name="Gallery" component={Gallery} />
               <Stack.Screen name="Admin" component={Admin} />
               <Stack.Screen name="Search" component={Search} />
+              <Stack.Screen
+                name="RelationshipTree"
+                component={RelationshipTree}
+              />
 
               <Stack.Screen
                 name="GenerationScreen"
